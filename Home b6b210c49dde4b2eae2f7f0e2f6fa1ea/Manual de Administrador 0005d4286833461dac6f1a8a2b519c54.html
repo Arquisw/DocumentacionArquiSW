@@ -1,0 +1,678 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Manual de Administrador</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+    margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.highlight-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.block-color-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-interactiveBlue { background-color: rgba(35, 131, 226, .07); }
+.select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
+.select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
+.select-value-color-green { background-color: rgba(219, 237, 219, 1); }
+.select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
+.select-value-color-translucentGray { background-color: rgba(255, 255, 255, 0.0375); }
+.select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
+.select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
+.select-value-color-red { background-color: rgba(255, 226, 221, 1); }
+.select-value-color-yellow { background-color: rgba(253, 236, 200, 1); }
+.select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
+.select-value-color-pageGlass { background-color: undefined; }
+.select-value-color-washGlass { background-color: undefined; }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="0005d428-6833-461d-ac6f-1a8a2b519c54" class="page sans"><header><img class="page-cover-image" src="https://www.notion.so/images/page-cover/nasa_carina_nebula.jpg" style="object-position:center 0%"/><div class="page-header-icon page-header-icon-with-cover"><img class="icon" src="https://www.notion.so/icons/user_blue.svg"/></div><h1 class="page-title">Manual de Administrador</h1><p class="page-description"></p></header><div class="page-body"><h2 id="d5a4afa5-1b53-46ae-bb30-194894aba479" class="">Tabla de contenidos</h2><hr id="9ca4890f-3ac2-4f4e-8c56-7a7cfd19da37"/><ol type="1" id="ce843e6f-b5af-4342-87ca-f7e6ffb6bb7f" class="numbered-list" start="1"><li>Vista estática y navegación (pre-login)</li></ol><ol type="1" id="63e28657-1064-4f96-b106-be787d65d06d" class="numbered-list" start="2"><li>Registro e inicio de sesión</li></ol><ol type="1" id="a05d26b7-6ad7-4d2e-a6e9-3df96e8185a5" class="numbered-list" start="3"><li>Navegación (post-login)</li></ol><ol type="1" id="42ba8082-8a35-4baf-afd2-c64b20434141" class="numbered-list" start="4"><li>Panel de administrador</li></ol><ol type="1" id="47bba480-7b5e-4f5b-aa25-d6cadd365030" class="numbered-list" start="5"><li>Ver Proyecto</li></ol><h2 id="e9115db4-be64-4400-8f34-3b9edae52040" class="">1. Vista estática y navegación (pre-login)</h2><hr id="fd8af6f4-91dd-4c9a-b28a-6b35d80babba"/><p id="30353c9a-a9a0-4364-ab81-7bbafaa41501" class="">Una vez entras en la aplicación, llegarás a la página de inicio, en la cual te encontrarás con un submenú en la barra de navegación, el cual corresponde a la vista estática, que cumple la función de ser informativa. El menú es:</p><ul id="ffaa69d7-a33e-490c-a959-80112dd7877f" class="bulleted-list"><li style="list-style-type:disc">Inicio</li></ul><ul id="78e4f632-6e25-4451-af38-8d670506657a" class="bulleted-list"><li style="list-style-type:disc">Fundamentación</li></ul><ul id="b83174eb-de7f-42c2-97f4-af62811c057c" class="bulleted-list"><li style="list-style-type:disc">Presentación</li></ul><ul id="66a12312-b239-43dc-b246-3a98893855d8" class="bulleted-list"><li style="list-style-type:disc">Acerca de nosotros</li></ul><ul id="1306a7f3-7621-4871-acfa-4a69779441f6" class="bulleted-list"><li style="list-style-type:disc">Botón de “Iniciar sesión”</li></ul><h3 id="0f1fd3ae-8250-4b0b-92d3-bde5f1e4778c" class="">Inicio</h3><p id="f1695820-af58-482f-a29e-5bcc88efc0fd" class="">La página de inicio, corresponde a la página principal, donde se presenta a grandes rasgos en que consiste la aplicación, junto, con sus objetivos e inspiración.</p><figure id="7960fa05-24f6-44c2-bb1b-aa79e96cabaf" class="image"><a href="Manual%20de%20Usuario%202f15d239e167412685835a711860125e/Untitled.png"><img style="width:1919px" src="Manual%20de%20Usuario%202f15d239e167412685835a711860125e/Untitled.png"/></a></figure><figure id="dbb0fe2e-63f5-49f1-a594-537e1b704d78" class="image"><a href="Manual%20de%20Usuario%202f15d239e167412685835a711860125e/Untitled%201.png"><img style="width:1920px" src="Manual%20de%20Usuario%202f15d239e167412685835a711860125e/Untitled%201.png"/></a></figure><h3 id="b4998cfb-9d83-4073-b2d8-b1b27f849676" class="">Fundamentación</h3><p id="96ba67bd-a006-46aa-a320-917b041c8cec" class="">Corresponde a la página que nos cuenta sobre la sustentación teórica, la justificación, el impacto y la solicitud de revisión del proyecto que desencadenó la aplicación.</p><figure id="91bf792a-49ae-4434-ba92-1b5def8adc1c" class="image"><a href="Manual%20de%20Usuario%202f15d239e167412685835a711860125e/Untitled%202.png"><img style="width:1920px" src="Manual%20de%20Usuario%202f15d239e167412685835a711860125e/Untitled%202.png"/></a></figure><figure id="12b668bd-cf4f-46e3-9968-622547b0e957" class="image"><a href="Manual%20de%20Usuario%202f15d239e167412685835a711860125e/Untitled%203.png"><img style="width:1920px" src="Manual%20de%20Usuario%202f15d239e167412685835a711860125e/Untitled%203.png"/></a></figure><h3 id="f69f6498-08df-4483-a0a9-22ebb0a8f8d1" class="">Presentación</h3><p id="b689c4b8-6a4f-4235-baf7-1465d6f1e47d" class="">La presentación de la página nos muestra la tesis que desencadenó el proyecto, este está compuesto por el planteamiento del problema, los objetivos que se componen por el general y los específicos, el marco metodológico, y el plan de trabajo, junto con sus referencias bibliográficas.</p><figure id="a4a1fce7-9e54-466e-9289-83860a123fce" class="image"><a href="Manual%20de%20Usuario%202f15d239e167412685835a711860125e/Untitled%204.png"><img style="width:1920px" src="Manual%20de%20Usuario%202f15d239e167412685835a711860125e/Untitled%204.png"/></a></figure><figure id="bc610d76-e4cd-45b8-b94e-c0da39fc75ac" class="image"><a href="Manual%20de%20Usuario%202f15d239e167412685835a711860125e/Untitled%205.png"><img style="width:1920px" src="Manual%20de%20Usuario%202f15d239e167412685835a711860125e/Untitled%205.png"/></a></figure><figure id="9b360cde-bb27-4b29-bb6e-3621b79e37e8" class="image"><a href="Manual%20de%20Usuario%202f15d239e167412685835a711860125e/Untitled%206.png"><img style="width:1920px" src="Manual%20de%20Usuario%202f15d239e167412685835a711860125e/Untitled%206.png"/></a></figure><h3 id="08cc79b2-6115-46e5-b826-719651be7136" class="">Acerca de nosotros</h3><p id="9fda0721-d728-4c50-94eb-bc77dd57352e" class="">En esta vista, podremos ver, los responsables e implicados dentro del proyecto que llevó al desarrollo de la aplicación.</p><figure id="483ad12b-8481-48ae-af1e-db4e5b353326" class="image"><a href="Manual%20de%20Usuario%202f15d239e167412685835a711860125e/Untitled%207.png"><img style="width:1920px" src="Manual%20de%20Usuario%202f15d239e167412685835a711860125e/Untitled%207.png"/></a></figure><figure id="168d6a4e-517c-40da-97f4-6c6564c41b31" class="image"><a href="Manual%20de%20Usuario%202f15d239e167412685835a711860125e/Untitled%208.png"><img style="width:1920px" src="Manual%20de%20Usuario%202f15d239e167412685835a711860125e/Untitled%208.png"/></a></figure><h3 id="86e07538-bde3-4e3f-98b7-004bb56982d4" class="">Botón de “Iniciar sesión”</h3><p id="6b4e8b0d-29f2-4d45-8cb5-690f4a50662e" class="">El botón de iniciar sesión abre un modal donde podrás iniciar sesión, registrar una nueva cuenta, o recuperar la contraseña si la has olvidado.</p><figure id="f6f2ee80-318e-4315-a0d5-1738ef27d484" class="image"><a href="Manual%20de%20Usuario%202f15d239e167412685835a711860125e/Untitled%209.png"><img style="width:624px" src="Manual%20de%20Usuario%202f15d239e167412685835a711860125e/Untitled%209.png"/></a></figure><figure id="6883c9d1-7fc2-4271-8577-37a41e4e0ccc" class="image"><a href="Manual%20de%20Usuario%202f15d239e167412685835a711860125e/Untitled%2010.png"><img style="width:626px" src="Manual%20de%20Usuario%202f15d239e167412685835a711860125e/Untitled%2010.png"/></a></figure><figure id="373bc9c5-7d43-4ddd-9670-4a6907e204cc" class="image"><a href="Manual%20de%20Usuario%202f15d239e167412685835a711860125e/Untitled%2011.png"><img style="width:1920px" src="Manual%20de%20Usuario%202f15d239e167412685835a711860125e/Untitled%2011.png"/></a></figure><h2 id="81dde1ac-61cd-4a56-92fa-547c561d9af5" class="">2. Registro e inicio de sesión</h2><hr id="c8aece39-5486-4efa-8be0-47caed543128"/><p id="3aa32d1a-acae-4950-a97b-4dfc34fbbdc2" class="">Debido a que para un usuario con rol administrador, no hay forma de crearlo dentro de la plataforma por razones de seguridad, la idea es que con el despliegue inicial, se cree por debajo en la base de datos, el usuario con rol administrador. Las credenciales de ese usuario que viene por defecto en la aplicación con el rol administrador, es el siguiente:</p><pre id="698005a8-18cf-4af2-97a1-0ff6c0632215" class="code"><code>Correo Electronico: lrios@uco.edu.co
+Contraseña: 123456789Aa</code></pre><blockquote id="5fcfdd32-b597-41a9-a917-42483211c5aa" class=""><strong>NOTA: </strong>Este usuario no tiene por qué ser definitivo, se puede modificar los datos del usuario, incluso cambiar el correo, lo que haría que se tuviera que activar nuevamente la cuenta, para verificar que el nuevo correo sea real, y pertenezca a la persona propietaria de la cuenta.</blockquote><p id="fe9a9590-7c96-4d55-9759-aa4e7003c8e2" class="">Si aun así, se desea crear un nuevo usuario administrador que pueda ayudar al anterior, o por algún otro motivo, se puede hacer lo siguiente:</p><blockquote id="53eb3e1b-69c0-46bb-9d49-db419e168b38" class=""><strong>NOTA: </strong>Para el último paso, se requiere acceso de scripting a la base de datos.</blockquote><h3 id="9ea60559-2019-40f0-bf08-aa9cc8d3eab1" class="">Registro</h3><p id="eb4391f4-4b86-4635-9e2e-c62e25c20bbd" class="">Principalmente, se deben diligenciar los datos obligatorios para poder registrar una nueva cuenta.</p><figure id="0e373036-402f-4823-af5a-23c15fcf9b1b" class="image"><a href="Manual%20de%20Usuario%202f15d239e167412685835a711860125e/Untitled%2012.png"><img style="width:625px" src="Manual%20de%20Usuario%202f15d239e167412685835a711860125e/Untitled%2012.png"/></a></figure><figure id="86deb462-2b97-4071-8cf4-0aa5e6ac385a" class="image"><a href="Manual%20de%20Usuario%202f15d239e167412685835a711860125e/Untitled%2013.png"><img style="width:623px" src="Manual%20de%20Usuario%202f15d239e167412685835a711860125e/Untitled%2013.png"/></a></figure><h3 id="608bcdc0-2bea-42f9-8325-064b58f18b38" class="">Inicio de sesión</h3><p id="dd13ae7e-7f85-42a7-9342-e993cca46450" class="">Luego de registrar la cuenta, se procede a iniciar sesión.</p><figure id="e0981a3e-95a6-46d0-8e63-fa5d192cad70" class="image"><a href="Manual%20de%20Usuario%202f15d239e167412685835a711860125e/Untitled%2014.png"><img style="width:623px" src="Manual%20de%20Usuario%202f15d239e167412685835a711860125e/Untitled%2014.png"/></a></figure><h3 id="cb509b93-5cb8-453e-94f2-277e6a416f84" class="">Activación de la cuenta</h3><p id="2c7dff58-ac19-4fa0-8b7f-86b6c3f4c202" class="">Una vez inicias sesión, te aparecerá un banner indicando que tu cuenta aún no está activada, y debes hacerlo. Si no lo hace, no tendrás acceso a las funcionalidades de la aplicación, como entrar al apartado de proyectos, o registrar una empresa o asociación. Lo mismo sucederá si el usuario decide cambiar el correo en algún punto luego de haber activado la cuenta, esta se desactivará nuevamente, obligando al usuario a volver a activar la cuenta para corroborar que el nuevo correo corresponda al dueño de la cuenta y además sea un correo real. En el caso del administrador, para este punto aún el usuario no tendrá ese rol de administrador, deberá activar la cuenta de la misma manera o no podrá ingresar al panel de administrador.</p><figure id="004d41ce-45b0-4c2d-b154-38ab01319e17" class="image"><a href="Manual%20de%20Usuario%202f15d239e167412685835a711860125e/Untitled%2015.png"><img style="width:1920px" src="Manual%20de%20Usuario%202f15d239e167412685835a711860125e/Untitled%2015.png"/></a></figure><p id="2d38e7c8-e4a4-478e-81a5-be6ef59fc63f" class="">Una vez entras al apartado para activar la cuenta, luego de haber presionado clic sobre el botón “Activar cuenta”, aparecerá un apartado donde te dirá tu correo, a donde será enviado el código para activar la cuenta.</p><figure id="447215ba-087c-4726-9da7-eca5eb22d49f" class="image"><a href="Manual%20de%20Usuario%202f15d239e167412685835a711860125e/Untitled%2016.png"><img style="width:1920px" src="Manual%20de%20Usuario%202f15d239e167412685835a711860125e/Untitled%2016.png"/></a></figure><p id="efd5393f-f723-49ad-9595-4a4a43ef13b1" class="">Una vez le des enviar código, se enviará el código al correo electrónico, y te aparecerá este nuevo formulario. Que te indicará ingresar el código para validar que este sea correcto.</p><figure id="25818250-d3f6-4c7a-bdb4-bfe043a87959" class="image"><a href="Manual%20de%20Usuario%202f15d239e167412685835a711860125e/Untitled%2017.png"><img style="width:636px" src="Manual%20de%20Usuario%202f15d239e167412685835a711860125e/Untitled%2017.png"/></a></figure><figure id="74a3cc69-7f02-4604-8375-17421d48c7f3" class="image"><a href="Manual%20de%20Usuario%202f15d239e167412685835a711860125e/Untitled%2018.png"><img style="width:1463px" src="Manual%20de%20Usuario%202f15d239e167412685835a711860125e/Untitled%2018.png"/></a></figure><figure id="4de28582-e18c-45ee-9421-0dda07c019f0" class="image"><a href="Manual%20de%20Usuario%202f15d239e167412685835a711860125e/Untitled%2019.png"><img style="width:633px" src="Manual%20de%20Usuario%202f15d239e167412685835a711860125e/Untitled%2019.png"/></a></figure><p id="418e06c1-cb2a-4ba9-8681-baa14b060f51" class="">Al darle clic en “Activar cuenta”, si el código es correcto, el cual tiene un plazo de vencimiento de 5 minutos, te redirigirá al inicio, el banner desaparecerá, y tendrás acceso a todas las funcionalidades de la aplicación.</p><figure id="d317012f-45ef-460b-8d1e-2a25b6ac704a" class="image"><a href="Manual%20de%20Usuario%202f15d239e167412685835a711860125e/Untitled%2020.png"><img style="width:1920px" src="Manual%20de%20Usuario%202f15d239e167412685835a711860125e/Untitled%2020.png"/></a></figure><h3 id="1a19d817-5fd8-4682-94e4-be48b8276034" class="">Asignar rol administrador al usuario</h3><p id="9cfed5bd-1c4c-4e4a-9e00-3b39383455eb" class="">Una vez teniendo acceso a la base de datos, lo primero que haremos será obtener el ID del usuario al que queremos asignarle el rol administrador usando el siguiente query:</p><pre id="d56ac172-3d05-4101-8500-8369fd766994" class="code"><code>SELECT * FROM usuario WHERE correo = &#x27;estebancoloradogonzalez@gmail.com&#x27;;</code></pre><p id="ebfdbb9d-63c9-4863-aa0d-db759a779c63" class="">La consulta se hara por el correo, que es el dato que conocemos del usuario. Este query da el siguiente resultado:</p><figure id="bb341bdc-0e9a-46f4-9bd6-174551a817a5" class="image"><a href="Manual%20de%20Administrador%200005d4286833461dac6f1a8a2b519c54/Untitled.png"><img style="width:1069px" src="Manual%20de%20Administrador%200005d4286833461dac6f1a8a2b519c54/Untitled.png"/></a></figure><p id="f36ac019-0616-42a7-a727-93b30534f4d6" class="">Como se puede observar el id del usuario en este caso es el número 7, luego procedemos a hacer ejecutar el script para asignar el rol, el cual es el siguiente:</p><pre id="d3082634-a2e8-4cc5-90e9-93e23d1ee0e6" class="code"><code>insert into rol_usuario  (id, rol, usuario) values (nextval(&#x27;rol_usuario_code_seq&#x27;), 3, 7);</code></pre><p id="16ec7af0-2b8d-4059-9fad-85c96cc1691c" class="">En la tercera posición de los parámetros ingresamos el ID del usuario, el segundo parámetro que corresponde al rol sería el número 3 que corresponde al ID del rol administrador. Una vez se ejecute el script, el usuario deberá cerrar sesión y volver a iniciarla, y ya podrá acceder a las funcionalidades que tiene un administrador en la aplicación.</p><h2 id="b8cd7765-cdc1-43e2-a2b7-b8240e10b8a8" class="">3. Navegación (post-login)</h2><hr id="21da69fc-e917-438e-9614-4589dc798438"/><p id="5cf795be-3b60-4439-9f2e-669695865b6b" class="">Luego de iniciar sesión en la aplicación como un usuario con el rol administrador, tendrá acceso a las siguientes opciones en la barra de navegación</p><ul id="c9323e56-22e1-4355-8ef1-d3a03241d4b4" class="bulleted-list"><li style="list-style-type:disc">Mi perfil</li></ul><ul id="20a2f131-98e9-42f1-a21e-7a0344d0179c" class="bulleted-list"><li style="list-style-type:disc">Configuración</li></ul><ul id="fd5f122a-2ee8-4bb6-9ea1-9c83b61ed571" class="bulleted-list"><li style="list-style-type:disc">Proyectos</li></ul><h3 id="14e628ea-9792-4874-b130-c35f8853af25" class="">Mi perfil</h3><p id="a365a9d2-60e7-44d9-9676-daa1f2028e1d" class="">Independientemente del rol que se tenga, cualquier usuario tendrá la opción de entrar a su perfil, donde podrá ver su información básica.</p><figure id="3bb089ce-43c5-4863-864e-ff7082eab83c" class="image"><a href="Manual%20de%20Administrador%200005d4286833461dac6f1a8a2b519c54/Untitled%201.png"><img style="width:1920px" src="Manual%20de%20Administrador%200005d4286833461dac6f1a8a2b519c54/Untitled%201.png"/></a></figure><figure id="82ca6224-67ae-47d5-9c90-8366da0b18f7" class="image"><a href="Manual%20de%20Administrador%200005d4286833461dac6f1a8a2b519c54/Untitled%202.png"><img style="width:1920px" src="Manual%20de%20Administrador%200005d4286833461dac6f1a8a2b519c54/Untitled%202.png"/></a></figure><p id="45dffd0c-630f-447a-b2e5-f8e8ae703dbf" class="">Como usuario administrador, no podrás subir una hoja de vida a la plataforma, a diferencia de los demás usuarios, debido a que no es relevante en el rol que desempeñas.</p><h3 id="1c1aa858-6581-4db3-8455-743d151f9c79" class="">Configuración</h3><p id="c1f8cf40-5f16-4275-8afb-ca7fa8a513d7" class="">Independientemente del rol que tenga un usuario podrá entrar al apartado de configuración, donde en este caso, como rol administrador solo podrás modificar la información de tu cuenta.</p><figure id="ce91a4c8-f31b-4bea-9d0f-a69a0d2d81f7" class="image"><a href="Manual%20de%20Administrador%200005d4286833461dac6f1a8a2b519c54/Untitled%203.png"><img style="width:1920px" src="Manual%20de%20Administrador%200005d4286833461dac6f1a8a2b519c54/Untitled%203.png"/></a></figure><figure id="79391f8c-df1b-433d-8245-ccb6df79ae7d" class="image"><a href="Manual%20de%20Administrador%200005d4286833461dac6f1a8a2b519c54/Untitled%204.png"><img style="width:1920px" src="Manual%20de%20Administrador%200005d4286833461dac6f1a8a2b519c54/Untitled%204.png"/></a></figure><p id="9cea72ab-ec33-415f-bcd1-6d08daafe9ec" class="">Como puedes observar, podrás modificar la información básica de la cuenta, cambiar la contraseña e incluso eliminar la cuenta. Si cambias el correo electrónico, se cerrará la sesión de la cuenta, para que inicies sesión con el nuevo correo, y actives tu cuenta nuevamente, si no activas la cuenta, no podrás ver el panel de administrador.</p><h3 id="e0e3da62-1228-485c-aeab-70f27943febc" class="">Proyectos</h3><p id="6a56dc65-86af-48c3-8200-2ff5f73b764e" class="">Independientemente del rol que tenga el usuario, se podrá entrar al módulo de proyectos, sin embargo, como rol administrador solo podrás entrar a la opción de buscar proyectos, pero no podrás postularte a ninguno de ellos por la naturaleza del rol que tienes.</p><figure id="45e97a30-43e8-4059-8a88-b9062179bc80" class="image"><a href="Manual%20de%20Administrador%200005d4286833461dac6f1a8a2b519c54/Untitled%205.png"><img style="width:1920px" src="Manual%20de%20Administrador%200005d4286833461dac6f1a8a2b519c54/Untitled%205.png"/></a></figure><figure id="19efa31c-5045-4691-ba4e-69208c277e98" class="image"><a href="Manual%20de%20Administrador%200005d4286833461dac6f1a8a2b519c54/Untitled%206.png"><img style="width:1920px" src="Manual%20de%20Administrador%200005d4286833461dac6f1a8a2b519c54/Untitled%206.png"/></a></figure><h2 id="6013d518-12ee-4493-b2f5-f8426690a72a" class="">4. Panel de administrador</h2><hr id="4b47dd37-50ee-43e7-bd95-d1a37519029b"/><p id="363cfa5e-beb5-44fa-a07f-dfa4ab4fbfa9" class="">Como usuario administrador, tendrás acceso al panel de administrador, donde podrás acceder a diferentes funcionalidades propias del rol al que pertenece, las cuales son:</p><ul id="fd88ed76-076a-4209-8b88-5af0b812a10f" class="bulleted-list"><li style="list-style-type:disc">Administrar eliminaciones</li></ul><ul id="308118a6-c202-4272-85c2-f02e85431d39" class="bulleted-list"><li style="list-style-type:disc">Aprobaciones</li></ul><ul id="b395dfae-7b6a-465f-bd4e-0035723ee4f0" class="bulleted-list"><li style="list-style-type:disc">Contrataciones</li></ul><ul id="d7bb2c84-cebc-41f0-b240-a879705c910a" class="bulleted-list"><li style="list-style-type:disc">Roles y permisos</li></ul><ul id="43393055-c27d-4e0c-a9f2-4d3087843f3c" class="bulleted-list"><li style="list-style-type:disc">Postulaciones</li></ul><h3 id="8b339b75-0594-4e5e-8651-90c8dcd91ae9" class="">Administrar eliminaciones</h3><p id="4b0a0944-fea6-49c9-8513-3564ffc2aca5" class="">En este apartado, llegarán todas las peticiones de eliminación de necesidades o proyectos, de empresas o asociaciones y de usuarios. La razón por la que la eliminación de sus cuentas llega como petición donde debes evaluar si lo eliminas o no, es porque, en el caso de los usuarios, son usuarios que tienen al menos una asociación registrada o una postulación hecha, o está seleccionado en un proyecto, eliminar su cuenta implicará consecuencias que debes evaluar como administrador. Lo mismo para las empresas u asociaciones que si la petición llega es porque tienen una necesidad registrada, en cuyo caso, también deberás evaluar el impacto que tendría eliminarla. Y finalmente las necesidades, estas llegarán si ya están aprobadas o negociadas, lo que quiere decir que eliminarlas podrá causar un impacto, ya que puede ser una necesidad que tenga un proyecto en desarrollo.</p><figure id="2e2337ac-66db-41ce-9391-64ab6ad6ee70" class="image"><a href="Manual%20de%20Administrador%200005d4286833461dac6f1a8a2b519c54/Untitled%207.png"><img style="width:1920px" src="Manual%20de%20Administrador%200005d4286833461dac6f1a8a2b519c54/Untitled%207.png"/></a></figure><h3 id="4219ba9c-073e-42fc-b619-cc5d241b60e0" class="">Aprobaciones</h3><p id="d8807b1b-82be-4133-8aa3-4ee69e9e892a" class="">En el apartado de aprobaciones, aparecerán todos los proyectos que se hayan registrado en la plataforma, y aún no hayan sido aprobados por un administrador, en esta tabla donde se pueden bar los proyectos, se podrá ver su información básica, como el nombre, la descripción, los tipos de consultoría que ha solicitado, y las acciones, que es ir a ver la página principal del proyecto, donde lo podrás ver de forma más detallada, como el archivo de requerimientos, que puede ser crucial a la hora de decidir si se aprueba o no, y finalmente están las dos opciones de aprobar y declinar.</p><figure id="2120e89e-da11-4471-b860-513673b10671" class="image"><a href="Manual%20de%20Administrador%200005d4286833461dac6f1a8a2b519c54/Untitled%208.png"><img style="width:1920px" src="Manual%20de%20Administrador%200005d4286833461dac6f1a8a2b519c54/Untitled%208.png"/></a></figure><p id="3ddc775c-f002-4d7e-b490-3d48c356dcac" class="">Si apruebas el proyecto, este cambiará de estado ha aprobado y saldrá de la tabla, si lo declinás, deberás indicar el motivo por el que lo estás rechazando y también cambiará el estado, pero ha rechazado y saldrá de la tabla.</p><figure id="a04ddff2-9cf7-4441-a1b8-04f3aedd144e" class="image"><a href="Manual%20de%20Administrador%200005d4286833461dac6f1a8a2b519c54/Untitled%209.png"><img style="width:1920px" src="Manual%20de%20Administrador%200005d4286833461dac6f1a8a2b519c54/Untitled%209.png"/></a></figure><figure id="a900df87-68dc-4435-9ebf-16ff76beb87f" class="image"><a href="Manual%20de%20Administrador%200005d4286833461dac6f1a8a2b519c54/Untitled%2010.png"><img style="width:1920px" src="Manual%20de%20Administrador%200005d4286833461dac6f1a8a2b519c54/Untitled%2010.png"/></a></figure><figure id="34817c98-65fa-4a51-b258-e27c6f3d17ca" class="image"><a href="Manual%20de%20Administrador%200005d4286833461dac6f1a8a2b519c54/Untitled%2011.png"><img style="width:1920px" src="Manual%20de%20Administrador%200005d4286833461dac6f1a8a2b519c54/Untitled%2011.png"/></a></figure><h3 id="db75ede8-c9a0-4516-808c-be3145c50f6a" class="">Contrataciones</h3><p id="379ff9d8-2e43-407d-94bb-cc523b314de5" class="">En este apartado, como administrador, podrás guardar los contratos efectuados en la plataforma, lo que le indica al sistema que el proyecto ya está negociado, por lo tanto, pasa a este estado, también podrás actualizar los contratos de proyectos ya concretados.</p><figure id="837fa7f0-e3c8-48b8-a1c8-956c6f55802c" class="image"><a href="Manual%20de%20Administrador%200005d4286833461dac6f1a8a2b519c54/Untitled%2012.png"><img style="width:1920px" src="Manual%20de%20Administrador%200005d4286833461dac6f1a8a2b519c54/Untitled%2012.png"/></a></figure><figure id="07d87948-3d8d-4601-b402-f899f41b7b27" class="image"><a href="Manual%20de%20Administrador%200005d4286833461dac6f1a8a2b519c54/Untitled%2013.png"><img style="width:623px" src="Manual%20de%20Administrador%200005d4286833461dac6f1a8a2b519c54/Untitled%2013.png"/></a></figure><h3 id="5cbeb8c3-5103-4017-8288-036bb9df3527" class="">Roles y permisos</h3><p id="a6ec1d3a-0890-4cde-b7ca-f18909d2e372" class="">En este apartado, como administrador, podrás cambiar los permisos de los roles dentro del proyecto, los cuales son: permisos de actualización, eliminación, escritura y lectura. Para esto, se debe tener cuidado, ya que afectaría ciertas funcionalidades que puede desempeñar un rol dentro de un proyecto. Esto ya estará a criterio del administrador.</p><figure id="f0aec6dc-e2b9-4ae9-8a69-a64db542f591" class="image"><a href="Manual%20de%20Administrador%200005d4286833461dac6f1a8a2b519c54/Untitled%2014.png"><img style="width:1920px" src="Manual%20de%20Administrador%200005d4286833461dac6f1a8a2b519c54/Untitled%2014.png"/></a></figure><h3 id="d0550437-adc2-4533-adec-7b989a885bdc" class="">Postulaciones</h3><p id="a549aacb-a6c4-4f80-b36f-8ff481aeef2d" class="">En este apartado, te aparecerán todos los proyectos que están en proceso de postulación, eso quiere decir, que serán proyectos en estado negociado y que no haya empezado el desarrollo del mismo.</p><figure id="4c35c3fb-0902-4da5-898e-5b795bea88f6" class="image"><a href="Manual%20de%20Administrador%200005d4286833461dac6f1a8a2b519c54/Untitled%2015.png"><img style="width:1920px" src="Manual%20de%20Administrador%200005d4286833461dac6f1a8a2b519c54/Untitled%2015.png"/></a></figure><p id="57c08cf7-e414-4937-9228-dae15623808f" class="">Si das clic en “Ver postulaciones”, podrás ver todas las postulaciones que se han hecho al proyecto.</p><figure id="d82b6ed3-99af-4f22-88a3-82b9af8d2b02" class="image"><a href="Manual%20de%20Administrador%200005d4286833461dac6f1a8a2b519c54/Untitled%2016.png"><img style="width:1920px" src="Manual%20de%20Administrador%200005d4286833461dac6f1a8a2b519c54/Untitled%2016.png"/></a></figure><p id="4f6858d4-42ea-474a-89fc-3f31f071636c" class="">En el criterio del administrador, estará evaluar al usuario postulado, accediendo a su perfil y pudiendo mirar su hoja de vida para evaluar si cumple con las características para los roles postulados. Si lo rechaza, deberá ingresar el motivo de rechazo.</p><figure id="272a68cf-564c-4827-93a1-b04a480abb70" class="image"><a href="Manual%20de%20Administrador%200005d4286833461dac6f1a8a2b519c54/Untitled%2017.png"><img style="width:1920px" src="Manual%20de%20Administrador%200005d4286833461dac6f1a8a2b519c54/Untitled%2017.png"/></a></figure><figure id="a00ebd5c-b336-4312-a200-28d409a282bd" class="image"><a href="Manual%20de%20Administrador%200005d4286833461dac6f1a8a2b519c54/Untitled%2018.png"><img style="width:620px" src="Manual%20de%20Administrador%200005d4286833461dac6f1a8a2b519c54/Untitled%2018.png"/></a></figure><h2 id="e2a88583-12d2-4c7d-bdf7-602d150e29bb" class="">5. Ver proyecto</h2><hr id="d923ae9c-818b-4b84-bd0e-f7c3f70e132b"/><p id="1a89922a-f2ae-40eb-ad39-55e836e92584" class="">Independientemente del rol que tenga un usuario, podrá entrar al perfil de un proyecto para ver su información, la diferencia en el rol radica en lo que puede ver y acceder.</p><p id="b42bfb09-5f69-4adf-b776-91a24495d78c" class="">Como usuario administrador, no podrás acceder al detalle del desarrollo del servicio de consultoría de un proyecto, ya que es información privada para los miembros del equipo y el dueño del proyecto. Como administrador podrás ver no solo los requerimientos, sino el contrato, a diferencia de otro tipo de usuarios.</p><figure id="effe31d8-80cb-4063-9c80-e792d3bc6c9c" class="image"><a href="Manual%20de%20Administrador%200005d4286833461dac6f1a8a2b519c54/Untitled%2019.png"><img style="width:1920px" src="Manual%20de%20Administrador%200005d4286833461dac6f1a8a2b519c54/Untitled%2019.png"/></a></figure><p id="d51e1d2e-ded9-45d6-8e41-71352f0d2141" class="">
+</p></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>

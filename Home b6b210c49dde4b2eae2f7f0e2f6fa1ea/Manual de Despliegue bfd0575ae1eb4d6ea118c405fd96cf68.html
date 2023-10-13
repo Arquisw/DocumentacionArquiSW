@@ -1,0 +1,727 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Manual de Despliegue</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+    margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.highlight-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.block-color-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-interactiveBlue { background-color: rgba(35, 131, 226, .07); }
+.select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
+.select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
+.select-value-color-green { background-color: rgba(219, 237, 219, 1); }
+.select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
+.select-value-color-translucentGray { background-color: rgba(255, 255, 255, 0.0375); }
+.select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
+.select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
+.select-value-color-red { background-color: rgba(255, 226, 221, 1); }
+.select-value-color-yellow { background-color: rgba(253, 236, 200, 1); }
+.select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
+.select-value-color-pageGlass { background-color: undefined; }
+.select-value-color-washGlass { background-color: undefined; }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="bfd0575a-e1eb-4d6e-a118-c405fd96cf68" class="page sans"><header><img class="page-cover-image" src="https://images.unsplash.com/photo-1429041966141-44d228a42775?ixlib=rb-4.0.3&amp;q=85&amp;fm=jpg&amp;crop=entropy&amp;cs=srgb" style="object-position:center 50%"/><div class="page-header-icon page-header-icon-with-cover"><img class="icon" src="https://www.notion.so/icons/snippet_red.svg"/></div><h1 class="page-title">Manual de Despliegue</h1><p class="page-description"></p></header><div class="page-body"><h2 id="8d09f15b-e62e-45b5-8401-fed5da2c4c00" class="">Tabla de contenidos</h2><hr id="4e5a9720-635d-4fed-9ce3-de8766edb9f1"/><ol type="1" id="b9566827-92d2-4db6-8aaa-fd0452b4acbe" class="numbered-list" start="1"><li>Introducción</li></ol><ol type="1" id="9dc3269d-c813-4cb1-93ca-192093cff7ff" class="numbered-list" start="2"><li>Contenedor de la base de datos</li></ol><ol type="1" id="7f0e1a01-9f18-4bc2-9fcb-7ef6ec72e790" class="numbered-list" start="3"><li>Contenedor del storage</li></ol><ol type="1" id="f163551d-d13d-4314-891f-6a4a492000da" class="numbered-list" start="4"><li>Contenedor del back del sistema principal</li></ol><ol type="1" id="163fbda9-3ec1-4c24-9833-6676e2627da9" class="numbered-list" start="5"><li>Contenedor del back del sistema de ingeniería de requisitos</li></ol><ol type="1" id="87d1b010-371a-4f8f-8092-c730d8904616" class="numbered-list" start="6"><li>Contenedor del front de la single page application</li></ol><ol type="1" id="fdbcd791-8a32-41f7-8a8c-354227d3f7de" class="numbered-list" start="7"><li>Credenciales importantes</li></ol><ol type="1" id="f4a1b069-11f7-41ee-a276-232bee9f207a" class="numbered-list" start="8"><li>Ramas</li></ol><h2 id="fe06620d-41d4-4c0f-8bb8-f1924ec6f80e" class="">1. Introducción</h2><hr id="6104d547-fd50-4803-ac52-a5243c6eddc4"/><p id="306825e7-a6f5-4422-9bc7-920a66d41a39" class="">Para desplegar la aplicación de ArquiSW se debe tener en cuenta los contenedores que se deben desplegar, esos contenedores lo puedes ver en la <strong><a href="https://arquisw.github.io/ArquiSW-Documentacion/">Arquitectura e Infraestructura del Sistema</a></strong>, en el diagrama de contenedores, en el cual tienes dos puntos de vista, el del Back del sistema principal y el del Back de ingeniería de requisitos. Independientemente de la vista que elijas observar, los contenedores a desplegar son los siguientes:</p><ul id="679d7995-c961-4fb1-ab9c-beab2445b5c9" class="bulleted-list"><li style="list-style-type:disc">Base de Datos</li></ul><ul id="b6430699-91b8-4930-b0c5-8b564295e30b" class="bulleted-list"><li style="list-style-type:disc">Storage</li></ul><ul id="adac229e-53a8-4b83-bfe8-594178ece4a2" class="bulleted-list"><li style="list-style-type:disc">Back del Sistema Principal</li></ul><ul id="659039e1-e642-40f1-a911-d5521caf20ee" class="bulleted-list"><li style="list-style-type:disc">Back del Sistema de Ingeniería de Requisitos</li></ul><ul id="6942912a-632a-415f-9a97-2264b3bd6068" class="bulleted-list"><li style="list-style-type:disc">Front de la Single Page Application</li></ul><p id="689c9fb6-8eb6-40ca-8186-5eab8f6c7812" class="">Si observas la arquitectura e infraestructura del sistema, podrás ver que es una aplicación que implementa una arquitectura orientada a servicios, la cual se diferencia de la arquitectura de microservicios porque cada servicio usa la misma base de datos. Es importante tener en cuenta a la hora de desplegar, ya que los servicios dependen de la base de datos, por eso se debe seguir el orden expuesto anteriormente, y el cual puedes seguir en este manual.</p><h2 id="a997b7cd-f618-4250-aa0f-7e30eda24af8" class="">2. Contenedor de la base de datos</h2><hr id="297ab314-72ed-406d-be43-cb471823cdde"/><p id="5dbcba42-47e5-43bc-8ace-be7c9869f43c" class="">La base de datos es el contenedor más importante, debido a que va a ser el que almacenará todos los datos que manejará la aplicación, por lo tanto, es el eje principal de su funcionamiento. También, la base de datos, al tratarse de un servicio que guardará información, no existen servicios que lo ofrezcan de manera gratuita. El motor de base de datos utilizado en el proyecto es PostgreSQL.</p><p id="04d7ad91-40ad-43c8-9568-1d4b7bcdb0d9" class="">Sea cual sea el servicio que se elija para desplegar la base de datos, este le generará una URL, con la que posteriormente se configurará en la conexión entre los backend y la base de datos, al contratar el servicio podrán elegir el nombre de la base de datos y la contraseña, datos importantes para la configuración de la conexión.</p><p id="96c5bd15-c001-4ccd-abd1-335b53e8c977" class="">Tanto en el Back Principal, como en el Back de ingeniería de requisitos se deberá configurar la conexión con la base de datos desplegada en el archivo application.properties, en la siguiente sección:</p><figure id="f3a97de3-3477-4750-8fea-e696036bd166" class="image"><a href="Manual%20de%20Despliegue%20bfd0575ae1eb4d6ea118c405fd96cf68/Untitled.png"><img style="width:816px" src="Manual%20de%20Despliegue%20bfd0575ae1eb4d6ea118c405fd96cf68/Untitled.png"/></a></figure><p id="5e392f7f-4f01-4d39-adf8-771311915d37" class="">Los valores a tener en cuenta son la de la URL, que en este caso se puede ver que está conectado a una base de datos local (se recomienda mantener esta base de datos local en un ambiente de desarrollo), otro valor es el del nombre de la base de datos, que en este caso se tiene ArquiSW, se recomienda dejar este nombre, pero no es obligatorio. Y el nombre de usuario y la contraseña de la base de datos, en este caso, se pusieron un usuario y una contraseña de prueba, se recomienda colocar una contraseña más compleja, y el nombre de usuario queda a decisión de la administración.</p><h2 id="b9564d73-c274-4c1b-9990-7f6ae0664e77" class="">3. Contenedor del storage</h2><hr id="366d7271-42ac-4ad8-bae1-c5189125151b"/><p id="6f105eb6-596a-4ec7-979a-c264a66592e7" class="">El Storage es el segundo contenedor más importante, debido a que es el encargado de almacenar los datos binarios. Actualmente el Storage ya se encuentra bajo el servicio de Firebase, de momento, se está usando la versión gratuita que es bastante limitada, para un ambiente productivo se va a requerir que se aumente la capacidad, esto implicará un costo. Las credenciales para acceder a la cuenta de Firebase es el siguiente:</p><pre id="2fa39b5f-4442-4114-b87d-03b57f7aee2b" class="code"><code>Correo Electrónico: arquisoftwareuco@gmail.com
+Contraseña: Arquisw2023</code></pre><h2 id="24bf4651-1293-4c0e-9bd9-88068cf5b4c7" class="">4. Contenedor del back del sistema principal</h2><hr id="f6b5147d-d26f-44e6-a1a3-ace6351a7672"/><p id="101666f0-4538-429c-a075-22138b2c6af4" class="">Este contenedor es el núcleo funcional del sistema, por lo tanto, se recomienda desplegar de primeras. Ya que el contenedor de ingeniería de requisitos, aunque puede funcionar de manera independiente, necesita de los datos previos generados en el sistema principal. Y el frontend, por obvias razones, depende su funcionamiento de consumir ambos backends.</p><p id="b424fa14-7412-4dfd-9485-d5ffa14d6c12" class="">Para estos contenedores, existen múltiples de servicios gratuitos para desplegar, el problema es que no puedes elegir el nombre del dominio, y será asignado uno por defecto. Sea cual sea la decisión, ya sea eligiendo uno gratuito o uno de paga que deja personalizar el nombre del dominio, se debe tener en cuenta lo siguiente:</p><ol type="1" id="2485f531-8e5f-4606-8bb5-8336f672a0fb" class="numbered-list" start="1"><li>Este Backend está construido con Spring Boot, el cual el repositorio es el siguiente: <strong><a href="https://github.com/Arquisw/ArquiSW-Backend">Sistema Principal (Backend)</a></strong></li></ol><ol type="1" id="81a62834-8e0b-45d2-a6d5-8e62b57d423e" class="numbered-list" start="2"><li>La configuración con el remitente de emails, el cual es el encargado de notificar dentro del sistema ya está configurado con las siguientes credenciales:<pre id="14422664-6da1-4c6a-9301-e4e0ecb6baab" class="code"><code>Correo Electrónico: arquisoftwareuco@outlook.com
+Contraseña: Arquisw2023</code></pre><p id="c4a96ba3-344f-4a14-975c-92312b48e4d0" class="">No es obligatorio mantener este correo, sin embargo, si se desea cambiar, deberá cambiarse tanto en el application.properties como en la clase co.edu.uco.arquisw.dominio.transversal.utilitario.TextoConstante</p><figure id="15d27030-9ea1-48d8-b8f1-e41db73bb0d2" class="image"><a href="Manual%20de%20Despliegue%20bfd0575ae1eb4d6ea118c405fd96cf68/Untitled%201.png"><img style="width:556px" src="Manual%20de%20Despliegue%20bfd0575ae1eb4d6ea118c405fd96cf68/Untitled%201.png"/></a></figure><figure id="6a8d898e-70fc-4a90-988a-8fa20a9ff19c" class="image"><a href="Manual%20de%20Despliegue%20bfd0575ae1eb4d6ea118c405fd96cf68/Untitled%202.png"><img style="width:985px" src="Manual%20de%20Despliegue%20bfd0575ae1eb4d6ea118c405fd96cf68/Untitled%202.png"/></a></figure></li></ol><ol type="1" id="96568c5a-07c6-4924-97ad-ad00b94a89f6" class="numbered-list" start="3"><li>Una vez despliegues el back, debes hacer una inserción de datos base en la base de datos, datos necesarios para el funcionamiento de la aplicación, sin estos datos, la aplicación no funcionará, se aclara que solo se deben insertar una vez, es decir una vez se despliegue el contenedor por primera vez. La base de datos debería estar totalmente vacía en este momento, el script para hacer la inserción es el siguiente:<pre id="3b0b306b-adf2-4db2-ba24-bb7c74b487e5" class="code"><code>-- Sistema Principal
+
+insert into rol (id, actualizar, eliminar, escribir, leer, nombre) values (nextval(&#x27;rol_code_seq&#x27;), true, true, true, true, &#x27;ROLE_USUARIO&#x27;);
+insert into rol (id, actualizar, eliminar, escribir, leer, nombre) values (nextval(&#x27;rol_code_seq&#x27;), true, true, true, true, &#x27;ROLE_ASOCIACION&#x27;);
+insert into rol (id, actualizar, eliminar, escribir, leer, nombre) values (nextval(&#x27;rol_code_seq&#x27;), true, true, true, true, &#x27;ROLE_ADMINISTRADOR&#x27;);
+insert into rol (id, actualizar, eliminar, escribir, leer, nombre) values (nextval(&#x27;rol_code_seq&#x27;), true, true, true, true, &#x27;ROLE_POSTULADO&#x27;);
+insert into rol (id, actualizar, eliminar, escribir, leer, nombre) values (nextval(&#x27;rol_code_seq&#x27;), true, true, true, true, &#x27;ROLE_SELECCIONADO&#x27;);
+insert into rol (id, actualizar, eliminar, escribir, leer, nombre) values (nextval(&#x27;rol_code_seq&#x27;), true, true, true, true, &#x27;ROLE_DIRECTOR_PROYECTO&#x27;);
+insert into rol (id, actualizar, eliminar, escribir, leer, nombre) values (nextval(&#x27;rol_code_seq&#x27;), false, false, false, true, &#x27;ROLE_PARTE_INTERESADA&#x27;);
+insert into rol (id, actualizar, eliminar, escribir, leer, nombre) values (nextval(&#x27;rol_code_seq&#x27;), true, true, true, true, &#x27;ROLE_EQUIPO_DESARROLLO&#x27;);
+insert into rol (id, actualizar, eliminar, escribir, leer, nombre) values (nextval(&#x27;rol_code_seq&#x27;), true, true, true, true, &#x27;ROLE_INGENIERIA&#x27;);
+insert into rol (id, actualizar, eliminar, escribir, leer, nombre) values (nextval(&#x27;rol_code_seq&#x27;), true, true, true, true, &#x27;ROLE_ARQUITECTURA&#x27;);
+insert into rol (id, actualizar, eliminar, escribir, leer, nombre) values (nextval(&#x27;rol_code_seq&#x27;), false, false, false, true, &#x27;ROLE_ANALISTA&#x27;);
+insert into rol (id, actualizar, eliminar, escribir, leer, nombre) values (nextval(&#x27;rol_code_seq&#x27;), true, true, true, true, &#x27;ROLE_LIDER_DE_EQUIPO&#x27;);
+insert into rol (id, actualizar, eliminar, escribir, leer, nombre) values (nextval(&#x27;rol_code_seq&#x27;), false, false, false, true, &#x27;ROLE_PATROCINADOR&#x27;);
+
+insert into rol_proyecto (id, nombre) values (nextval(&#x27;rol_proyecto_code_seq&#x27;), &#x27;ROLE_DIRECTOR_PROYECTO&#x27;);
+insert into rol_proyecto (id, nombre) values (nextval(&#x27;rol_proyecto_code_seq&#x27;), &#x27;ROLE_PARTE_INTERESADA&#x27;);
+insert into rol_proyecto (id, nombre) values (nextval(&#x27;rol_proyecto_code_seq&#x27;), &#x27;ROLE_EQUIPO_DESARROLLO&#x27;);
+insert into rol_proyecto (id, nombre) values (nextval(&#x27;rol_proyecto_code_seq&#x27;), &#x27;ROLE_INGENIERIA&#x27;);
+insert into rol_proyecto (id, nombre) values (nextval(&#x27;rol_proyecto_code_seq&#x27;), &#x27;ROLE_ARQUITECTURA&#x27;);
+insert into rol_proyecto (id, nombre) values (nextval(&#x27;rol_proyecto_code_seq&#x27;), &#x27;ROLE_ANALISTA&#x27;);
+insert into rol_proyecto (id, nombre) values (nextval(&#x27;rol_proyecto_code_seq&#x27;), &#x27;ROLE_LIDER_DE_EQUIPO&#x27;);
+insert into rol_proyecto (id, nombre) values (nextval(&#x27;rol_proyecto_code_seq&#x27;), &#x27;ROLE_PATROCINADOR&#x27;);
+
+insert into estado (id, nombre) values (nextval(&#x27;estado_code_seq&#x27;), &#x27;En espera&#x27;);
+insert into estado (id, nombre) values (nextval(&#x27;estado_code_seq&#x27;), &#x27;Aprobado&#x27;);
+insert into estado (id, nombre) values (nextval(&#x27;estado_code_seq&#x27;), &#x27;Negociado&#x27;);
+insert into estado (id, nombre) values (nextval(&#x27;estado_code_seq&#x27;), &#x27;Rechazado&#x27;);
+insert into estado (id, nombre) values (nextval(&#x27;estado_code_seq&#x27;), &#x27;En proceso&#x27;);
+insert into estado (id, nombre) values (nextval(&#x27;estado_code_seq&#x27;), &#x27;En desarrollo&#x27;);
+insert into estado (id, nombre) values (nextval(&#x27;estado_code_seq&#x27;), &#x27;Finalizado&#x27;);
+
+insert into tipo_consultoria (id, nombre) values (nextval(&#x27;tipo_consultoria_code_seq&#x27;), &#x27;Ingeniería de requisitos&#x27;);
+insert into tipo_consultoria (id, nombre) values (nextval(&#x27;tipo_consultoria_code_seq&#x27;), &#x27;SQA&#x27;);
+insert into tipo_consultoria (id, nombre) values (nextval(&#x27;tipo_consultoria_code_seq&#x27;), &#x27;SQC&#x27;);
+
+-- Usuario 1 (Administrador)
+
+insert into persona (id, apellidos, correo, nombre) values (nextval(&#x27;persona_code_seq&#x27;), &#x27;Rios Alzate&#x27;, &#x27;lrios@uco.edu.co&#x27;, &#x27;Luz Mery&#x27;);
+insert into usuario (id, activado, clave, correo) values (nextval(&#x27;usuario_code_seq&#x27;), true, &#x27;$2a$10$riUdzshYSAva/5ueEdIGle8FAsDvGT.Z8cv/rqB0q5GPEaNkXs/GK&#x27;, &#x27;lrios@uco.edu.co&#x27;);
+insert into rol_usuario  (id, rol, usuario) values (nextval(&#x27;rol_usuario_code_seq&#x27;), 1, 1);
+insert into rol_usuario  (id, rol, usuario) values (nextval(&#x27;rol_usuario_code_seq&#x27;), 3, 1);</code></pre><p id="4cdc5f5d-de64-4549-89f9-9c5b4a0858a1" class="">Como puedes observar, se está ingresando un usuario base en el sistema, un usuario ya activo, estos datos del usuario, pueden modificarse, sin embargo, como se está haciendo la inserción por base de datos, se debe asegurar, que el correo sea real. El token que se está agregando en clave o contraseña, es la decodificación de la siguiente contraseña:</p><pre id="fb1bc71e-b458-4eb5-8fbb-cd1773e0f030" class="code"><code>Correo Electrónico: lrios@uco.edu.co
+Contraseña: 123456789Aa</code></pre></li></ol><h2 id="096d7167-b777-4706-ab27-12287980f1a1" class="">5. Contenedor del back del sistema de ingeniería de requisitos</h2><hr id="7be9eb51-653c-41e8-aa77-5c6b2d98b960"/><p id="2d6fd633-06a5-4081-9150-3fc5710f9d39" class="">Este contenedor es el corazón funcional del proceso de ingeniería de requisitos, pero depende de los datos procesados en el back principal, esto ya que se comparte base de datos entre ambos backends, puesto que es una arquitectura orientada a servicios. Por lo tanto, se recomienda desplegar, luego de la base de datos, y luego del back del sistema principal.</p><p id="53df4ec3-24ae-4dfd-9188-ee377f76da36" class="">Para estos contenedores, existen múltiples de servicios gratuitos para desplegar, el problema es que no puedes elegir el nombre del dominio, y será asignado uno por defecto. Sea cual sea la decisión, ya sea eligiendo uno gratuito o uno de paga que deja personalizar el nombre del dominio, se debe tener en cuenta lo siguiente:</p><ol type="1" id="e47a1919-1353-490f-939a-34b44344597d" class="numbered-list" start="1"><li>Este Backend está construido con Spring Boot, el cual el repositorio es el siguiente: <strong><a href="https://github.com/Arquisw/IngenieriaDeRequisitos">Sistema del Proceso de Ingeniería de Requisitos (Backend)</a></strong></li></ol><ol type="1" id="23c02122-6842-48a2-92e1-abd6d6f51085" class="numbered-list" start="2"><li>La configuración con el remitente de emails, el cual es el encargado de notificar dentro del sistema ya está configurado con las siguientes credenciales:<pre id="706168b3-22b5-4951-be6a-f8a5651f3493" class="code"><code>Correo Electrónico: arquisoftwareuco@outlook.com
+Contraseña: Arquisw2023</code></pre><p id="a70385fd-4498-49a7-908e-eebe544b56f0" class="">No es obligatorio mantener este correo, sin embargo, si se desea cambiar, deberá cambiarse tanto en el application.properties como en la clase co.edu.uco.arquisw.dominio.transversal.utilitario.TextoConstante</p><figure id="5341e6d4-27ab-4180-a210-896536d62bbc" class="image"><a href="Manual%20de%20Despliegue%20bfd0575ae1eb4d6ea118c405fd96cf68/Untitled%201.png"><img style="width:556px" src="Manual%20de%20Despliegue%20bfd0575ae1eb4d6ea118c405fd96cf68/Untitled%201.png"/></a></figure><figure id="e8e6d97d-08c0-414f-bb96-60d181100959" class="image"><a href="Manual%20de%20Despliegue%20bfd0575ae1eb4d6ea118c405fd96cf68/Untitled%202.png"><img style="width:985px" src="Manual%20de%20Despliegue%20bfd0575ae1eb4d6ea118c405fd96cf68/Untitled%202.png"/></a></figure></li></ol><ol type="1" id="85a3f8fe-7434-44e3-b29a-46893cf17e0d" class="numbered-list" start="3"><li>Una vez despliegues el back, debes hacer una inserción de datos base en la base de datos, datos necesarios para el funcionamiento de la aplicación, sin estos datos, la aplicación no funcionará, se aclara que solo se deben insertar una vez, es decir una vez se despliegue el contenedor por primera vez. La base de datos debería estar únicamente con los datos bases del sistema principal, el script para hacer la inserción es el siguiente:<pre id="1f479556-8918-4013-9985-c89935879fdf" class="code"><code>-- Sistema de Ingeniería de Requisitos
+
+insert into tipo_requisito (id, nombre) values (nextval(&#x27;tipo_requisito_code_seq&#x27;), &#x27;Funcional&#x27;);
+insert into tipo_requisito (id, nombre) values (nextval(&#x27;tipo_requisito_code_seq&#x27;), &#x27;NO Funcional&#x27;);</code></pre></li></ol><h2 id="9cfe1eac-4abf-46ab-8a25-2408a90cdd77" class="">6. Contenedor del front de la single page application</h2><hr id="f1fbdfc8-d54e-48b5-a0a3-9344dd589955"/><p id="f36b77d5-ba7e-4e79-bda3-6f4e958b86bd" class="">El contenedor del Front es la puerta de entrada del usuario a la aplicación, por ende es crucial, y se recomienda desplegar al final, el repositorio es el siguiente: <strong><a href="https://github.com/Arquisw/Arquisw-Front">ArquiSW (Frontend)</a></strong>, para este contenedor, se recomienda desplegar en un servicio que no sea gratuito, para poder elegir el nombre del dominio y que no sea un impuesto estándar que perjudique la marca de ArquiSW, para los backend no es relevante el nombre del dominio, así que se pueden usar servicios gratuitos.</p><h2 id="3731a0c9-335d-4d64-91a8-da87d3f401bc" class="">7. Credenciales importantes</h2><hr id="9e1cf852-7e13-4b7f-bb6f-64dec1ba5246"/><p id="dbf9ed25-188d-4ac1-a979-076565ea9884" class="">Fuera de las credenciales dadas en los pasos anteriores, una cuenta importante es la de Github, donde se encuentran todos los repositorios, la cual es la siguiente:</p><pre id="5c1e5fbb-2028-4786-8b40-6eeeb848eef9" class="code"><code>Correo Electrónico: ingsistemas.coor@uco.edu.co
+Contraseña: Arquisw2021</code></pre><p id="fa2508cc-05d0-494f-8e21-cf1d3ee2adfe" class="">Cabe aclarar, que con esta cuenta de github se puede iniciar sesión en la de Sonar, que es donde están los reportes de los análisis de código estático.</p><h2 id="2c4ef121-a4e2-437d-a7d7-51588c8c45e1" class="">8. Ramas</h2><hr id="578e1356-e8a7-4993-9882-8ea31cbee70c"/><p id="ad8b615b-d8bf-48de-9204-5169f2dcde19" class="">En todos los 3 repositorios, se manejan 3 ramas, las cuales son:</p><ul id="2ec74ef0-99c1-4ab5-9064-575109fedd3a" class="bulleted-list"><li style="list-style-type:disc"><strong>Develop: </strong>Rama donde se realiza el desarrollo, es una rama que pretende usarse para un ambiente no productivo o de pruebas, sino que está hecho para trabajarse en un ambiente local.</li></ul><ul id="7b01ee08-d46f-4cae-8af2-c2f150eb3812" class="bulleted-list"><li style="list-style-type:disc"><strong>Quality: </strong>Rama espejo de main, que pretende ser la rama intermedia entre develop y main, rama donde llegarán primero los desarrollos de develop, y permitirá probar los desarrollos en un ambiente clon del ambiente real, una vez se tenga todo bien, se pasarían a llevar los cambios a la siguiente rama.</li></ul><ul id="d0ad3931-fe88-43d5-9c57-6b7189f31fdb" class="bulleted-list"><li style="list-style-type:disc"><strong>Main: </strong>Rama principal, que será la rama productiva, en donde se encontrará el ambiente de producción, se recomienda que al desplegar en un ambiente productivo se apunte siempre a esta rama.</li></ul><p id="b5c7ff10-e4b9-4b72-8908-04a8776a9d66" class="">
+</p></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>

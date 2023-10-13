@@ -1,0 +1,677 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Manual de Usuario</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+    margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.highlight-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.block-color-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-interactiveBlue { background-color: rgba(35, 131, 226, .07); }
+.select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
+.select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
+.select-value-color-green { background-color: rgba(219, 237, 219, 1); }
+.select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
+.select-value-color-translucentGray { background-color: rgba(255, 255, 255, 0.0375); }
+.select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
+.select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
+.select-value-color-red { background-color: rgba(255, 226, 221, 1); }
+.select-value-color-yellow { background-color: rgba(253, 236, 200, 1); }
+.select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
+.select-value-color-pageGlass { background-color: undefined; }
+.select-value-color-washGlass { background-color: undefined; }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="2f15d239-e167-4126-8583-5a711860125e" class="page sans"><header><img class="page-cover-image" src="https://images.unsplash.com/photo-1462331940025-496dfbfc7564?ixlib=rb-4.0.3&amp;q=85&amp;fm=jpg&amp;crop=entropy&amp;cs=srgb" style="object-position:center 50%"/><div class="page-header-icon page-header-icon-with-cover"><img class="icon" src="https://www.notion.so/icons/groups_pink.svg"/></div><h1 class="page-title">Manual de Usuario</h1><p class="page-description"></p></header><div class="page-body"><h2 id="8a785fe0-0c1a-4bc3-bb6f-8408f1d34082" class="">Tabla de contenidos</h2><hr id="97f57b4a-7769-4693-959d-6a71d14c117f"/><ol type="1" id="b0acacef-c613-48f4-a389-441b32eb67d9" class="numbered-list" start="1"><li>Vista estática y navegación (pre-login)</li></ol><ol type="1" id="d0b186ac-06f7-4580-b701-40b0b3d99555" class="numbered-list" start="2"><li>Registro e inicio de sesión</li></ol><ol type="1" id="1021f80f-9bd5-4636-8732-92d6d6d9a6ec" class="numbered-list" start="3"><li>Navegación para usuario que desea contratar un servicio de consultoría (post-login)</li></ol><ol type="1" id="abf7db06-efd1-415d-9848-5332dc98ad96" class="numbered-list" start="4"><li>Navegación para usuario que desea postular a un proyecto (post-login)</li></ol><ol type="1" id="66788410-b959-4cd8-a8ed-97e80f2ffc77" class="numbered-list" start="5"><li>Desarrollo del proceso de ingeniería de requisitos</li></ol><h2 id="ad0a2a53-ef66-48a8-b4c9-5b1f72b054c0" class="">1. Vista estática y navegación (pre-login)</h2><hr id="b69a56fb-9815-4222-963a-0cb0e2c439f8"/><p id="1f68403d-941a-4fe2-88d3-719bafbcfa63" class="">Una vez entras en la aplicación, llegarás a la página de inicio, en la cual te encontrarás con un submenú en la barra de navegación, el cual corresponde a la vista estática, que cumple la función de ser informativa. El menú es:</p><ul id="91f47520-9e03-4ec8-8c38-168aa7ee65df" class="bulleted-list"><li style="list-style-type:disc">Inicio</li></ul><ul id="66e300f9-ba4a-455a-ba46-e78618a5a3b0" class="bulleted-list"><li style="list-style-type:disc">Fundamentación</li></ul><ul id="0d87e7b6-e02a-4af9-983b-ec04b9d81a75" class="bulleted-list"><li style="list-style-type:disc">Presentación</li></ul><ul id="421756b6-cfad-48a3-ad98-66317bd3c9a3" class="bulleted-list"><li style="list-style-type:disc">Acerca de nosotros</li></ul><ul id="89191066-a446-4013-be2e-9bb826571046" class="bulleted-list"><li style="list-style-type:disc">Botón de “Iniciar sesión”</li></ul><h3 id="42f4e326-0e31-4d83-8baf-3010cc16514d" class="">Inicio</h3><p id="27fccd29-e1d5-42b2-b9b2-9dbda3a89d39" class="">La página de inicio, corresponde a la página principal, donde se presenta a grandes rasgos en que consiste la aplicación, junto, con sus objetivos e inspiración.</p><figure id="e4b63b71-c53e-4a04-aa1d-cd4a76307e74" class="image"><a href="Manual%20de%20Usuario%202f15d239e167412685835a711860125e/Untitled.png"><img style="width:1919px" src="Manual%20de%20Usuario%202f15d239e167412685835a711860125e/Untitled.png"/></a></figure><figure id="2f5354c1-da10-4c20-a2e7-314179cac78c" class="image"><a href="Manual%20de%20Usuario%202f15d239e167412685835a711860125e/Untitled%201.png"><img style="width:1920px" src="Manual%20de%20Usuario%202f15d239e167412685835a711860125e/Untitled%201.png"/></a></figure><h3 id="bdd8e430-c586-46f1-ad39-39e899bbd05b" class="">Fundamentación</h3><p id="74f67b8b-b402-4cb8-b9d8-ed52c2bbafcb" class="">Corresponde a la página que nos cuenta sobre la sustentación teórica, la justificación, el impacto y la solicitud de revisión del proyecto que desencadenó la aplicación.</p><figure id="8d56ca6d-364a-4692-a2fe-bb36a3f556a7" class="image"><a href="Manual%20de%20Usuario%202f15d239e167412685835a711860125e/Untitled%202.png"><img style="width:1920px" src="Manual%20de%20Usuario%202f15d239e167412685835a711860125e/Untitled%202.png"/></a></figure><figure id="da36663f-b7a8-42d4-8723-f6bf70971c08" class="image"><a href="Manual%20de%20Usuario%202f15d239e167412685835a711860125e/Untitled%203.png"><img style="width:1920px" src="Manual%20de%20Usuario%202f15d239e167412685835a711860125e/Untitled%203.png"/></a></figure><h3 id="6511f6cd-9e10-4975-a3d2-5c86d1770431" class="">Presentación</h3><p id="b1b876ce-a58f-4837-927f-0515f9fc760c" class="">La presentación de la página nos muestra la tesis que desencadenó el proyecto, este está compuesto por el planteamiento del problema, los objetivos que se componen por el general y los específicos, el marco metodológico, y el plan de trabajo, junto con sus referencias bibliográficas.</p><figure id="e026096f-e49d-4c8c-8445-ef5073f4a151" class="image"><a href="Manual%20de%20Usuario%202f15d239e167412685835a711860125e/Untitled%204.png"><img style="width:1920px" src="Manual%20de%20Usuario%202f15d239e167412685835a711860125e/Untitled%204.png"/></a></figure><figure id="a754d180-4a3a-4510-aff4-f6fb12a14cfa" class="image"><a href="Manual%20de%20Usuario%202f15d239e167412685835a711860125e/Untitled%205.png"><img style="width:1920px" src="Manual%20de%20Usuario%202f15d239e167412685835a711860125e/Untitled%205.png"/></a></figure><figure id="641ba298-b476-473b-abb6-c6fe50c4cbc5" class="image"><a href="Manual%20de%20Usuario%202f15d239e167412685835a711860125e/Untitled%206.png"><img style="width:1920px" src="Manual%20de%20Usuario%202f15d239e167412685835a711860125e/Untitled%206.png"/></a></figure><h3 id="ab2b10f0-3e5b-41a6-a7c6-a9ec3599efdf" class="">Acerca de nosotros</h3><p id="979aad3e-772d-4748-b708-5d4fea05b0cf" class="">En esta vista, podremos ver, los responsables e implicados dentro del proyecto que llevó al desarrollo de la aplicación.</p><figure id="52900752-0230-4936-b09e-4953db1dc118" class="image"><a href="Manual%20de%20Usuario%202f15d239e167412685835a711860125e/Untitled%207.png"><img style="width:1920px" src="Manual%20de%20Usuario%202f15d239e167412685835a711860125e/Untitled%207.png"/></a></figure><figure id="d4f5d60a-f2ba-4aaf-982e-04f333de9277" class="image"><a href="Manual%20de%20Usuario%202f15d239e167412685835a711860125e/Untitled%208.png"><img style="width:1920px" src="Manual%20de%20Usuario%202f15d239e167412685835a711860125e/Untitled%208.png"/></a></figure><h3 id="5c8de6c1-d107-40e9-bb88-96568be6b350" class="">Botón de “Iniciar sesión”</h3><p id="0ffd1653-bd3f-45c3-9ba0-f7b6aa3b48cf" class="">El botón de iniciar sesión abre un modal donde podrás iniciar sesión, registrar una nueva cuenta, o recuperar la contraseña si la has olvidado.</p><figure id="44a09e78-cbf5-447e-8fbe-7afa852ed8ed" class="image"><a href="Manual%20de%20Usuario%202f15d239e167412685835a711860125e/Untitled%209.png"><img style="width:624px" src="Manual%20de%20Usuario%202f15d239e167412685835a711860125e/Untitled%209.png"/></a></figure><figure id="9b935514-465c-4975-af2d-c6110a2bebeb" class="image"><a href="Manual%20de%20Usuario%202f15d239e167412685835a711860125e/Untitled%2010.png"><img style="width:626px" src="Manual%20de%20Usuario%202f15d239e167412685835a711860125e/Untitled%2010.png"/></a></figure><figure id="e9cbb002-0606-4dd2-b9bd-671b4c8fb7d3" class="image"><a href="Manual%20de%20Usuario%202f15d239e167412685835a711860125e/Untitled%2011.png"><img style="width:1920px" src="Manual%20de%20Usuario%202f15d239e167412685835a711860125e/Untitled%2011.png"/></a></figure><h2 id="891968ca-7c47-48e4-82cf-6f3b3162b412" class="">2. Registro e inicio de sesión</h2><hr id="b46425ab-fddb-49e6-a9ed-ab0d54124367"/><h3 id="b478fa63-8b07-4a8d-8883-edde1d4ae959" class="">Registro</h3><p id="174ae966-83af-447c-be77-7c7bd469a5ec" class="">Principalmente, se deben diligenciar los datos obligatorios para poder registrar una nueva cuenta.</p><figure id="52044b57-3bf4-4f4a-8828-b7fa8185cd34" class="image"><a href="Manual%20de%20Usuario%202f15d239e167412685835a711860125e/Untitled%2012.png"><img style="width:625px" src="Manual%20de%20Usuario%202f15d239e167412685835a711860125e/Untitled%2012.png"/></a></figure><figure id="f650b785-7696-4f34-ab81-f1f84af806a3" class="image"><a href="Manual%20de%20Usuario%202f15d239e167412685835a711860125e/Untitled%2013.png"><img style="width:623px" src="Manual%20de%20Usuario%202f15d239e167412685835a711860125e/Untitled%2013.png"/></a></figure><h3 id="63fff22a-e97a-452d-9b15-804dfcb77a1e" class="">Inicio de sesión</h3><p id="8f48e749-780e-4e4f-9172-ee28cccf8f9f" class="">Luego de registrar la cuenta, se procede a iniciar sesión.</p><figure id="9b1cf9e1-be82-4254-9f41-57a08e07cbce" class="image"><a href="Manual%20de%20Usuario%202f15d239e167412685835a711860125e/Untitled%2014.png"><img style="width:623px" src="Manual%20de%20Usuario%202f15d239e167412685835a711860125e/Untitled%2014.png"/></a></figure><h3 id="177c038d-8196-4092-8598-7c22f44203cc" class="">Activación de la cuenta</h3><p id="1bd8b71b-47f1-4afc-8a39-c3438ef2dcc8" class="">Una vez inicias sesión, te aparecerá un banner indicando que tu cuenta aún no está activada, y debes hacerlo. Si no lo hace, no tendrás acceso a las funcionalidades de la aplicación, como entrar al apartado de proyectos, o registrar una empresa o asociación. Lo mismo sucederá si el usuario decide cambiar el correo en algún punto luego de haber activado la cuenta, esta se desactivará nuevamente, obligando al usuario a volver a activar la cuenta para corroborar que el nuevo correo corresponda al dueño de la cuenta y además sea un correo real.</p><figure id="cf963903-8ad1-4a86-907e-f8b14564e9f9" class="image"><a href="Manual%20de%20Usuario%202f15d239e167412685835a711860125e/Untitled%2015.png"><img style="width:1920px" src="Manual%20de%20Usuario%202f15d239e167412685835a711860125e/Untitled%2015.png"/></a></figure><p id="22f7fcc7-e1e6-4d6b-9e93-10e482922c44" class="">Una vez entras al apartado para activar la cuenta, luego de haber presionado clic sobre el botón “Activar cuenta”, aparecerá un apartado donde te dirá tu correo, a donde será enviado el código para activar la cuenta.</p><figure id="ad61d86a-3bf7-48e1-8c71-e9991f248354" class="image"><a href="Manual%20de%20Usuario%202f15d239e167412685835a711860125e/Untitled%2016.png"><img style="width:1920px" src="Manual%20de%20Usuario%202f15d239e167412685835a711860125e/Untitled%2016.png"/></a></figure><p id="f9b937a6-aea9-484a-b746-b51c31e6f47f" class="">Una vez le des enviar código, se enviará el código al correo electrónico, y te aparecerá este nuevo formulario. Que te indicará ingresar el código para validar que este sea correcto.</p><figure id="b535f7ed-2997-4646-8f15-788f7c44ee52" class="image"><a href="Manual%20de%20Usuario%202f15d239e167412685835a711860125e/Untitled%2017.png"><img style="width:636px" src="Manual%20de%20Usuario%202f15d239e167412685835a711860125e/Untitled%2017.png"/></a></figure><figure id="2a48a3a8-4ea4-4b13-8b61-9158d727c8a4" class="image"><a href="Manual%20de%20Usuario%202f15d239e167412685835a711860125e/Untitled%2018.png"><img style="width:1463px" src="Manual%20de%20Usuario%202f15d239e167412685835a711860125e/Untitled%2018.png"/></a></figure><figure id="43fa43c3-a8c4-4cd9-9683-28acdd801348" class="image"><a href="Manual%20de%20Usuario%202f15d239e167412685835a711860125e/Untitled%2019.png"><img style="width:633px" src="Manual%20de%20Usuario%202f15d239e167412685835a711860125e/Untitled%2019.png"/></a></figure><p id="38421900-6df4-42bd-90c0-d40306115068" class="">Al darle clic en “Activar cuenta”, si el código es correcto, el cual tiene un plazo de vencimiento de 5 minutos, te redirigirá al inicio, el banner desaparecerá, y tendrás acceso a todas las funcionalidades de la aplicación.</p><figure id="c1f1eda1-bc3f-4df0-b7a8-354ef23f7378" class="image"><a href="Manual%20de%20Usuario%202f15d239e167412685835a711860125e/Untitled%2020.png"><img style="width:1920px" src="Manual%20de%20Usuario%202f15d239e167412685835a711860125e/Untitled%2020.png"/></a></figure><h2 id="4cfc0c9e-373c-4139-b4e5-6b14df39d5fd" class="">3. Navegación para usuario que desea contratar un servicio de consultoría (post-login)</h2><hr id="3d022de5-6a69-44ef-8f91-7174411e87a3"/><p id="ffb53965-b13a-4b5c-97d7-7f5281567d97" class="">Inicialmente, cuando te registras en la aplicación, eres un usuario estándar, lo que quiere decir, que podrías postular a un proyecto, sin embargo, si lo que quieres es contratar un servicio de consultoría, tendrás la opción de registrar la empresa o asociación que representas, para poder registrar una necesidad del que nace un proyecto que será ejecutado en la plataforma por otros usuarios especializados, y cuidadosamente seleccionados por el administrador.</p><p id="b57c3eb9-7d09-49fc-b9f4-37428afc4063" class="">Principalmente, tendrás acceso a la siguiente opción para registrar una empresa o asociación:</p><figure id="d0f34148-46cc-40d9-b71c-ee085e4702e8" class="image"><a href="Manual%20de%20Usuario%202f15d239e167412685835a711860125e/Untitled%2021.png"><img style="width:309px" src="Manual%20de%20Usuario%202f15d239e167412685835a711860125e/Untitled%2021.png"/></a></figure><p id="a40e4b3a-d8a8-42cb-be47-a30516805bde" class="">Cuando das clic en “Registrar empresa o asociación” abrirá un modal, donde diligenciarás los datos básicos de la empresa o asociación.</p><figure id="9c7dbcae-09e1-41c2-ae0a-5de146aa3b54" class="image"><a href="Manual%20de%20Usuario%202f15d239e167412685835a711860125e/Untitled%2022.png"><img style="width:627px" src="Manual%20de%20Usuario%202f15d239e167412685835a711860125e/Untitled%2022.png"/></a></figure><p id="1a351e77-0fa4-489c-b974-a31f567b4d73" class="">Una vez le das registrar, este se guarda de manera exitosa, esto hará que pases a tener el rol asociación, que te permitirá contratar servicios de consultoría en la plataforma, con este rol, tendrás acceso a las siguientes opciones principales:</p><ul id="576b50e0-0579-4870-baa9-62814b99c8e6" class="bulleted-list"><li style="list-style-type:disc">Mi perfil</li></ul><ul id="d4edab33-6b18-4e6c-9d23-c2d6f678e7c6" class="bulleted-list"><li style="list-style-type:disc">Mi empresa o asociación</li></ul><ul id="b3ec54df-2346-408c-a011-b124579885ea" class="bulleted-list"><li style="list-style-type:disc">Configuración</li></ul><ul id="7762b8a9-09b6-4255-920b-bd31690e5950" class="bulleted-list"><li style="list-style-type:disc">Proyectos</li></ul><h3 id="9237f173-c2c7-45c5-83f0-98fc683587ea" class="">Mi perfil</h3><p id="c718bde0-9dab-4141-84f1-3d046837f188" class="">Independientemente del rol que se tenga, cualquier usuario tendrá la opción de entrar a su perfil, donde podrá ver su información básica.</p><figure id="6f46f46e-3dbc-4dce-9265-cf2da3885bd1" class="image"><a href="Manual%20de%20Usuario%202f15d239e167412685835a711860125e/Untitled%2023.png"><img style="width:1920px" src="Manual%20de%20Usuario%202f15d239e167412685835a711860125e/Untitled%2023.png"/></a></figure><figure id="9533a844-269d-4b99-8097-eded8481d1d1" class="image"><a href="Manual%20de%20Usuario%202f15d239e167412685835a711860125e/Untitled%2024.png"><img style="width:1920px" src="Manual%20de%20Usuario%202f15d239e167412685835a711860125e/Untitled%2024.png"/></a></figure><p id="2ca13fea-8d64-487d-a6e0-f951d072389c" class="">Como usuario con rol asociación, no podrás subir una hoja de vida a la plataforma, a diferencia de los demás usuarios, debido a que no es relevante en el rol que desempeñas, sin embargo, si subiste una hoja de vida previamente a registrar una empresa o asociación, la hoja de vida se conservará. Pero no podrás modificarla o borrarla, como por ejemplo en este caso:</p><figure id="6a3ca323-fc1a-4c37-89af-d9b3fa0dc5aa" class="image"><a href="Manual%20de%20Usuario%202f15d239e167412685835a711860125e/Untitled%2025.png"><img style="width:1920px" src="Manual%20de%20Usuario%202f15d239e167412685835a711860125e/Untitled%2025.png"/></a></figure><h3 id="2ad07ea0-e7d2-48c0-9d54-9a5ab747d8ab" class="">Mi empresa o asociación</h3><p id="6ced7cd5-dec1-4365-90b4-7614cf5e61c2" class="">Una vez registras tu empresa o asociación, podrás ver su perfil con la información principal:</p><figure id="ecf1e6b2-559b-4e51-bd78-e96e4e316649" class="image"><a href="Manual%20de%20Usuario%202f15d239e167412685835a711860125e/Untitled%2026.png"><img style="width:1920px" src="Manual%20de%20Usuario%202f15d239e167412685835a711860125e/Untitled%2026.png"/></a></figure><figure id="3f46929f-517b-4a08-8749-a3a49ef57765" class="image"><a href="Manual%20de%20Usuario%202f15d239e167412685835a711860125e/Untitled%2027.png"><img style="width:1920px" src="Manual%20de%20Usuario%202f15d239e167412685835a711860125e/Untitled%2027.png"/></a></figure><figure id="1a878703-d084-415c-bb2b-695645747edd" class="image"><a href="Manual%20de%20Usuario%202f15d239e167412685835a711860125e/Untitled%2028.png"><img style="width:1920px" src="Manual%20de%20Usuario%202f15d239e167412685835a711860125e/Untitled%2028.png"/></a></figure><h3 id="ed81abe1-c085-40fa-bf77-d3239bfd6fa8" class="">Configuración</h3><p id="c5026d11-5f32-41e9-b90a-0b87280b4882" class="">Independientemente del rol que tenga un usuario podrá entrar al apartado de configuración, donde en este caso, como rol asociación, podrás modificar la información tanto de tu cuenta, como también la de la empresa o asociación a la que representas.</p><figure id="1cf1b151-3cfe-4952-8dec-dc65b00b9fd6" class="image"><a href="Manual%20de%20Usuario%202f15d239e167412685835a711860125e/Untitled%2029.png"><img style="width:1920px" src="Manual%20de%20Usuario%202f15d239e167412685835a711860125e/Untitled%2029.png"/></a></figure><figure id="7a131e30-8ef3-482a-9029-982a7ed03ab6" class="image"><a href="Manual%20de%20Usuario%202f15d239e167412685835a711860125e/Untitled%2030.png"><img style="width:1920px" src="Manual%20de%20Usuario%202f15d239e167412685835a711860125e/Untitled%2030.png"/></a></figure><figure id="87bfc97b-66b5-4d3a-bbf5-637b9909507b" class="image"><a href="Manual%20de%20Usuario%202f15d239e167412685835a711860125e/Untitled%2031.png"><img style="width:1920px" src="Manual%20de%20Usuario%202f15d239e167412685835a711860125e/Untitled%2031.png"/></a></figure><p id="b83aa148-7ff6-4102-9c6b-bf327a15c3e9" class="">Como puedes observar, podrás modificar la información básica de la cuenta, cambiar la contraseña e incluso eliminar la cuenta. Si cambias el correo electrónico, se cerrará la sesión de la cuenta, para que inicies sesión con el nuevo correo, y actives tu cuenta nuevamente, si no activas la cuenta, no podrás acceder a las demás funcionalidades de la aplicación. También podrás modificar la información de la empresa o asociación a la que representas, o incluso eliminarla.</p><h3 id="cd82fc01-b749-42b8-9ac2-20926bd278a8" class="">Proyectos</h3><p id="68da44d5-d622-4bed-b818-88e585cbc873" class="">Independientemente del rol que tenga el usuario, se podrá entrar al módulo de proyectos, sin embargo, como rol asociación solo podrás entrar a la opción de buscar proyectos, pero no podrás postularte a ninguno de ellos por la naturaleza del rol que tienes. Y también podrás entras a “Mis proyectos”, donde podrás ver las necesidades y sus proyectos.</p><figure id="2478a112-1692-4815-a63d-67aee98e386d" class="image"><a href="Manual%20de%20Usuario%202f15d239e167412685835a711860125e/Untitled%2032.png"><img style="width:1920px" src="Manual%20de%20Usuario%202f15d239e167412685835a711860125e/Untitled%2032.png"/></a></figure><figure id="f1dd0014-c45c-4969-a25a-42c9da7d9e0c" class="image"><a href="Manual%20de%20Usuario%202f15d239e167412685835a711860125e/Untitled%2033.png"><img style="width:1920px" src="Manual%20de%20Usuario%202f15d239e167412685835a711860125e/Untitled%2033.png"/></a></figure><figure id="8745d557-7ce7-4abb-b653-e013d620689e" class="image"><a href="Manual%20de%20Usuario%202f15d239e167412685835a711860125e/Untitled%2034.png"><img style="width:1920px" src="Manual%20de%20Usuario%202f15d239e167412685835a711860125e/Untitled%2034.png"/></a></figure><p id="7bbceaac-717d-4840-98d5-10d02204695a" class="">Ahora podrás registrar una necesidad, que dará pasa al proyecto que será desarrollado en el servicio de consultoría que desees contratar, cuando le das “Registrar una necesidad” te abrirá un modal donde debes subir un archivo en formato PDF de los requisitos de la necesidad que quieres que sea solventada, el nombre del proyecto que resuelve esa necesidad, la descripción y el tipo de consultoría.</p><figure id="010eac10-9b87-4faf-be87-5ae19871f7a0" class="image"><a href="Manual%20de%20Usuario%202f15d239e167412685835a711860125e/Untitled%2035.png"><img style="width:627px" src="Manual%20de%20Usuario%202f15d239e167412685835a711860125e/Untitled%2035.png"/></a></figure><p id="eb272493-056e-4e1d-8925-d8d8481505b6" class="">Una vez guardas la necesidad, esta se creará, y podrás verla automáticamente, con su estado, como se acaba de crear, la necesidad esté en espera de que sea revisada y aprobada por el administrador, y el proyecto en proceso de que empiece su ejecución.</p><figure id="5d8cfab7-af08-44d7-9141-04a88643d876" class="image"><a href="Manual%20de%20Usuario%202f15d239e167412685835a711860125e/Untitled%2036.png"><img style="width:1920px" src="Manual%20de%20Usuario%202f15d239e167412685835a711860125e/Untitled%2036.png"/></a></figure><p id="7a391ccb-2d66-4c81-b1c4-2ef75511ebae" class="">Cuando el proyecto sea aprobado, se actualizará su estado, luego entrará en un proceso de negociación contigo, donde el administrador se comunicará contigo, ya sea por el correo de tu cuenta, o por el número de contacto que has proporcionado, una vez efectúen el contrato, el administrador lo subirá a la plataforma, y la necesidad pasará a estar en estado negociado, por lo tanto, los usuarios registrados en la plataforma, se podrán postular al proyecto.</p><figure id="33309575-9726-4c3f-a7f4-5058c2957ff2" class="image"><a href="Manual%20de%20Usuario%202f15d239e167412685835a711860125e/Untitled%2037.png"><img style="width:1920px" src="Manual%20de%20Usuario%202f15d239e167412685835a711860125e/Untitled%2037.png"/></a></figure><h3 id="a577796e-45b4-4958-822b-a975a397c31b" class="">Ver proyecto</h3><p id="2191afd9-c4bf-4fd1-957a-fd8ccfc241b7" class="">Si le das a “Ver proyecto”, como dueño del mismo, podrás ver el contrato que solo tú y el administrador, podrán, como también podrás entrar a los servicios de consultoría para ver su desarrollo y progreso.</p><figure id="88300ad0-8c72-42d4-b1e2-605b7d234104" class="image"><a href="Manual%20de%20Usuario%202f15d239e167412685835a711860125e/Untitled%2038.png"><img style="width:1920px" src="Manual%20de%20Usuario%202f15d239e167412685835a711860125e/Untitled%2038.png"/></a></figure><h2 id="138a814c-3446-45a6-ab36-6f880496313d" class="">4. Navegación para usuario que desea postular a un proyecto (post-login)</h2><hr id="a78488fc-8d96-4af1-b2a1-dc513ff3c971"/><p id="b88a9874-48d6-493e-bcaf-1cca8228ecc2" class="">Una vez registras tu cuenta, serás un usuario estándar, en el cual tendrás dos opciones, registrar una empresa o asociación para contratar un servicio de consultoría, o postular a un proyecto, lo cual es este caso.</p><p id="61863cf0-def3-4b97-870a-63d407e2606c" class="">Principalmente, tendrás acceso a las siguientes opciones principales:</p><ul id="6b96773a-ca62-49b0-8d7a-9a328fbff4de" class="bulleted-list"><li style="list-style-type:disc">Mi perfil</li></ul><ul id="32351d5b-75ab-4e7a-a33e-db70bc477b5d" class="bulleted-list"><li style="list-style-type:disc">Configuración</li></ul><ul id="c7796c4f-f65e-48d4-9861-89d791f12784" class="bulleted-list"><li style="list-style-type:disc">Proyectos</li></ul><h3 id="15823b22-b17b-413b-86e0-b3a0a95ab256" class="">Mi perfil</h3><p id="c543930c-b76d-47e2-a2f3-142ac4940e0c" class="">Independientemente del rol que se tenga, cualquier usuario tendrá la opción de entrar a su perfil, donde podrá ver su información básica.</p><figure id="3d32e3b5-4610-4dfa-8c57-5191d8ec815d" class="image"><a href="Manual%20de%20Usuario%202f15d239e167412685835a711860125e/Untitled%2039.png"><img style="width:1920px" src="Manual%20de%20Usuario%202f15d239e167412685835a711860125e/Untitled%2039.png"/></a></figure><p id="282b6fb0-ebe2-44f0-8d6c-31fb35d7485e" class="">Como usuario que pretende postular a un proyecto, tus probabilidades de ser seleccionado pueden aumentar si agregas una hoja de vida en la plataforma.</p><figure id="b0d2adfd-6820-47f5-bffc-bd4014168f67" class="image"><a href="Manual%20de%20Usuario%202f15d239e167412685835a711860125e/Untitled%2040.png"><img style="width:1920px" src="Manual%20de%20Usuario%202f15d239e167412685835a711860125e/Untitled%2040.png"/></a></figure><figure id="b6c72025-69c5-48da-83d2-dee6946f041a" class="image"><a href="Manual%20de%20Usuario%202f15d239e167412685835a711860125e/Untitled%2041.png"><img style="width:625px" src="Manual%20de%20Usuario%202f15d239e167412685835a711860125e/Untitled%2041.png"/></a></figure><figure id="3086fd9c-4629-421e-b857-e713872e8d24" class="image"><a href="Manual%20de%20Usuario%202f15d239e167412685835a711860125e/Untitled%2042.png"><img style="width:624px" src="Manual%20de%20Usuario%202f15d239e167412685835a711860125e/Untitled%2042.png"/></a></figure><figure id="c16be130-ded7-4228-a4f7-99a97a913bb4" class="image"><a href="Manual%20de%20Usuario%202f15d239e167412685835a711860125e/Untitled%2043.png"><img style="width:1920px" src="Manual%20de%20Usuario%202f15d239e167412685835a711860125e/Untitled%2043.png"/></a></figure><h3 id="c88321f4-67cb-4df2-8f13-0dfca9ab3f6e" class="">Configuración</h3><p id="54999d7d-268a-451a-b798-e7580a98f631" class="">Independientemente del rol que tenga un usuario podrá entrar al apartado de configuración, donde en este caso, solo podrás modificar la información de tu cuenta, e incluso eliminarla.</p><figure id="e12c9268-13cc-4e8c-a436-333330ce0199" class="image"><a href="Manual%20de%20Usuario%202f15d239e167412685835a711860125e/Untitled%2044.png"><img style="width:1920px" src="Manual%20de%20Usuario%202f15d239e167412685835a711860125e/Untitled%2044.png"/></a></figure><figure id="87ba93eb-d0f2-4368-a9b6-d8a780af8074" class="image"><a href="Manual%20de%20Usuario%202f15d239e167412685835a711860125e/Untitled%2045.png"><img style="width:1920px" src="Manual%20de%20Usuario%202f15d239e167412685835a711860125e/Untitled%2045.png"/></a></figure><h3 id="6aa34046-34d3-40fa-bcf1-0a203590beeb" class="">Proyectos</h3><p id="5403c17c-3ac8-4106-94d3-942f50a3f3ac" class="">Como usuario estándar, que pretende postular y posiblemente ser seleccionado a un proyecto, tendrás acceso a buscar proyectos, donde estarán todos los proyectos a los que puedes postular. Mis proyectos, donde estarán tus proyectos a los cuales has sido seleccionado, solo podrás estar activo en un proyecto a la vez, no podrás volver a postular hasta que el proyecto en el que este finalice su desarrollo. Y finalmente los proyectos postulados, donde podrás ver de manera de historial a los que has sido rechazado y también en el que estás postulado actualmente.</p><figure id="75736316-ddc9-44cf-9a2c-bcd1544273da" class="image"><a href="Manual%20de%20Usuario%202f15d239e167412685835a711860125e/Untitled%2046.png"><img style="width:1920px" src="Manual%20de%20Usuario%202f15d239e167412685835a711860125e/Untitled%2046.png"/></a></figure><figure id="96df60af-88ae-4329-b603-33f8a44b2638" class="image"><a href="Manual%20de%20Usuario%202f15d239e167412685835a711860125e/Untitled%2047.png"><img style="width:1920px" src="Manual%20de%20Usuario%202f15d239e167412685835a711860125e/Untitled%2047.png"/></a></figure><p id="08b3ceb8-69a5-48d9-9d88-09b057475bde" class="">Una vez das en el botón postularse, podrás postular a desempeñar un rol dentro del proyecto, una vez elijas el o los roles que quieres desempeñar, puedes dar clic a postularse. Una vez postules, perderás la posibilidad de postular a otro proyecto, solo podrás postular a un proyecto a la vez.</p><figure id="2cf5d99c-de79-429c-a6cb-bc86837917b4" class="image"><a href="Manual%20de%20Usuario%202f15d239e167412685835a711860125e/Untitled%2048.png"><img style="width:1920px" src="Manual%20de%20Usuario%202f15d239e167412685835a711860125e/Untitled%2048.png"/></a></figure><p id="772edcde-1533-4b65-a137-6cfe622d5cc5" class="">Pero podrás ver el proyecto al que postulaste en proyectos postulados, donde podrás acceder al proyecto.</p><figure id="8a01dfc6-8ca8-4f6d-a008-ee8ea456a68b" class="image"><a href="Manual%20de%20Usuario%202f15d239e167412685835a711860125e/Untitled%2049.png"><img style="width:1917px" src="Manual%20de%20Usuario%202f15d239e167412685835a711860125e/Untitled%2049.png"/></a></figure><p id="034a197f-9026-43b9-aaf6-f942a1e07432" class="">Si entras al proyecto, como aún no has sido seleccionado no podrás acceder al apartado de los servicios, pero podrás ver el archivo de requerimientos para que sepas de qué trata el proyecto, si la descripción no fue lo suficientemente clara. No podrás ver el contrato en ninguna circunstancia, debido a que solo el cliente dueño del proyecto junto con el administrador podrán ver el contrato.</p><figure id="8c7f3e19-fbd4-4baf-9390-c5e2641217c5" class="image"><a href="Manual%20de%20Usuario%202f15d239e167412685835a711860125e/Untitled%2050.png"><img style="width:1920px" src="Manual%20de%20Usuario%202f15d239e167412685835a711860125e/Untitled%2050.png"/></a></figure><p id="dbf92945-478a-4cab-adf8-4ed2d5f2fc8f" class="">Si eres seleccionado, ya el proyecto aparecerá en mis proyectos, y al entrar al perfil del proyecto, ya podrás entrar a los servicios de consultoría y se activarán las funcionalidades correspondientes a o a los roles que elegiste.</p><figure id="00220844-12ca-42aa-ae43-205e2b29ff6a" class="image"><a href="Manual%20de%20Usuario%202f15d239e167412685835a711860125e/Untitled%2051.png"><img style="width:1920px" src="Manual%20de%20Usuario%202f15d239e167412685835a711860125e/Untitled%2051.png"/></a></figure><figure id="5be0a320-d4dd-4644-89fd-14d9c89ce1ab" class="image"><a href="Manual%20de%20Usuario%202f15d239e167412685835a711860125e/Untitled%2052.png"><img style="width:1920px" src="Manual%20de%20Usuario%202f15d239e167412685835a711860125e/Untitled%2052.png"/></a></figure><h2 id="38c8d9f6-1654-45e5-b286-501ba74281b3" class="">5. Desarrollo del proceso de ingeniería de requisitos</h2><hr id="f37c65c6-1919-4246-88ae-98fe8e3b4a3e"/><p id="1c52ed34-c0b3-48b4-a3a8-e68015777a54" class="">Una vez el equipo esté conformado, el proyecto necesitará de 3 aprobaciones para iniciar con el proceso de consultoría, en el siguiente orden específico:</p><ol type="1" id="666cc610-3397-429e-a24b-9bb92b92b4d2" class="numbered-list" start="1"><li>Aprobación por el usuario con el rol ingeniería</li></ol><ol type="1" id="e0410fd7-5d26-46ec-8b34-1293f65d6091" class="numbered-list" start="2"><li>Aprobación por el usuario con el rol líder de equipo</li></ol><ol type="1" id="586da2eb-fa5b-4da0-902b-6f70ddd21fbd" class="numbered-list" start="3"><li>Aprobación por el usuario con el rol director de proyecto</li></ol><p id="4761ef2a-a1b6-49ce-8e5e-ce64c63189a2" class="">A medida que se vayan haciendo las aprobaciones en ese orden, se irá habilitando la siguiente aprobación</p><figure id="ec54736d-3611-4145-96d3-63a849f04236" class="image"><a href="Manual%20de%20Usuario%202f15d239e167412685835a711860125e/Untitled%2053.png"><img style="width:1920px" src="Manual%20de%20Usuario%202f15d239e167412685835a711860125e/Untitled%2053.png"/></a></figure><figure id="c02c569d-0004-41db-84cd-106be3fcd5a5" class="image"><a href="Manual%20de%20Usuario%202f15d239e167412685835a711860125e/Untitled%2054.png"><img style="width:1920px" src="Manual%20de%20Usuario%202f15d239e167412685835a711860125e/Untitled%2054.png"/></a></figure><figure id="73a5bc56-7758-4c54-88c0-cb1cb25d3df8" class="image"><a href="Manual%20de%20Usuario%202f15d239e167412685835a711860125e/Untitled%2055.png"><img style="width:1920px" src="Manual%20de%20Usuario%202f15d239e167412685835a711860125e/Untitled%2055.png"/></a></figure><p id="fbb30f4f-3120-45f1-8ca8-0b1cea06fb8b" class="">En la última aprobación una vez lo aprueba, el proceso de consultoría empezará, en el caso de ingeniería de requisitos, antes de la aprobación del director de proyecto se verá esto:</p><figure id="79257055-468c-4757-ac23-41efb1baf75d" class="image"><a href="Manual%20de%20Usuario%202f15d239e167412685835a711860125e/Untitled%2056.png"><img style="width:1920px" src="Manual%20de%20Usuario%202f15d239e167412685835a711860125e/Untitled%2056.png"/></a></figure><h3 id="e737094b-39fc-49bf-b67c-8e041cca4a6f" class="">Proceso de ingeniería de requisitos</h3><p id="4c1018e7-17b3-47ff-abde-6af0f5314d21" class="">Este apartado lo podrán ver todos los miembros del equipo y el dueño del proyecto, y es donde aparecerán todas las fases junto con sus etapas, en tiempo real de la ejecución del proyecto.</p><figure id="95026b07-8128-4eff-b635-049c5e76199e" class="image"><a href="Manual%20de%20Usuario%202f15d239e167412685835a711860125e/Untitled%2057.png"><img style="width:1920px" src="Manual%20de%20Usuario%202f15d239e167412685835a711860125e/Untitled%2057.png"/></a></figure><h3 id="cf0567ac-811f-486a-ab34-b11479e2c857" class="">Etapa</h3><p id="d3f75ba2-3bd1-4a2b-84f8-666564104258" class="">En la etapa, además ver la información y el estado de la misma, podrás ver las versiones de los requisitos de esa etapa, en la primera etapa, se debe iniciar con la primera versión, esto solo lo podrá hacer el usuario con el rol ingeniería, los demás miembros del equipo que no tengan ese rol, verán lo siguiente:</p><figure id="7e038049-721a-4a53-9624-a937df9f1f15" class="image"><a href="Manual%20de%20Usuario%202f15d239e167412685835a711860125e/Untitled%2058.png"><img style="width:1920px" src="Manual%20de%20Usuario%202f15d239e167412685835a711860125e/Untitled%2058.png"/></a></figure><p id="34b56d41-38c3-4654-9cc3-b0c672731027" class="">Pero el miembro del equipo con rol ingeniería lo verá de la siguiente manera:</p><figure id="06307b75-5224-4a0b-9457-6185bd29d6cb" class="image"><a href="Manual%20de%20Usuario%202f15d239e167412685835a711860125e/Untitled%2059.png"><img style="width:1920px" src="Manual%20de%20Usuario%202f15d239e167412685835a711860125e/Untitled%2059.png"/></a></figure><p id="8a1da5ce-8ce3-44ee-bb65-004b2a5b4d2b" class="">Al iniciar la primera versión, los miembros del equipo verán lo siguiente:</p><figure id="8e16766d-801b-4e06-b97f-938a9b0fb4f7" class="image"><a href="Manual%20de%20Usuario%202f15d239e167412685835a711860125e/Untitled%2060.png"><img style="width:1920px" src="Manual%20de%20Usuario%202f15d239e167412685835a711860125e/Untitled%2060.png"/></a></figure><p id="7a0df65c-b763-411c-9e2d-50c5fccbf034" class="">Sin embargo, el miembro del equipo que tenga el rol líder de equipo, tendrá las siguientes funciones, aprobar la etapa, que solo se puede aprobar si ya hay una versión final establecida, por el miembro del equipo con el rol ingeniería. Y rechazar una versión, que solo se podrá rechazar si hay requisitos en ella. ¿Y si la versión no es exactamente la misma que la anterior.</p><figure id="2374097e-64a3-4add-8154-ef7a070a01cc" class="image"><a href="Manual%20de%20Usuario%202f15d239e167412685835a711860125e/Untitled%2061.png"><img style="width:1920px" src="Manual%20de%20Usuario%202f15d239e167412685835a711860125e/Untitled%2061.png"/></a></figure><p id="c226ffea-1431-44b3-bc7e-a75a4c7e74db" class="">Aprobar la etapa hará que se pase a la siguiente fase o etapa, si la fase en la que estas tiene más de una etapa. y para rechazarla, debes agregar un motivo de por qué la rechazas.</p><figure id="5c5a845f-5b74-4d8b-b214-ff60950760a4" class="image"><a href="Manual%20de%20Usuario%202f15d239e167412685835a711860125e/Untitled%2062.png"><img style="width:1920px" src="Manual%20de%20Usuario%202f15d239e167412685835a711860125e/Untitled%2062.png"/></a></figure><h3 id="966f5537-b630-4107-9aec-dd130dd768a4" class="">Versión</h3><p id="5ac431f7-247d-4be7-a29c-70955116b213" class="">Cuando un usuario tiene el rol ingeniería de requisitos podrás crear, modificar y eliminar requisitos, teniendo habilitados esos botones, sin embargo, no tendrá habilitado el servicio de generar versión final, que solo lo tendrá habilitado el usuario con el rol ingeniería.</p><figure id="cd8335c8-fc58-483e-bb8e-616cba9a287c" class="image"><a href="Manual%20de%20Usuario%202f15d239e167412685835a711860125e/Untitled%2063.png"><img style="width:1920px" src="Manual%20de%20Usuario%202f15d239e167412685835a711860125e/Untitled%2063.png"/></a></figure><p id="1fb0ef1a-8468-44f1-9377-4569cf66c714" class="">Para crear un requisito se ingresa su nombre, descripción y tipo de requisito, que puede ser funcional o no funcional.</p><figure id="5307e76e-cbfe-4d8d-abdf-8e8d0a900b66" class="image"><a href="Manual%20de%20Usuario%202f15d239e167412685835a711860125e/Untitled%2064.png"><img style="width:1920px" src="Manual%20de%20Usuario%202f15d239e167412685835a711860125e/Untitled%2064.png"/></a></figure><p id="0fa1b4ad-2b19-4b43-8906-5972fec55ae7" class="">Al guardar el requisito, lo podrás ver en la página:</p><figure id="19c7734c-08a8-44fe-99d1-44ecdfcd586f" class="image"><a href="Manual%20de%20Usuario%202f15d239e167412685835a711860125e/Untitled%2065.png"><img style="width:1920px" src="Manual%20de%20Usuario%202f15d239e167412685835a711860125e/Untitled%2065.png"/></a></figure><p id="26b17568-e764-4029-ace3-d2597402b617" class="">Para el usuario con el rol ingeniería podrá generar la versión final, lo que permitirá que el líder de equipo pueda revisar la etapa y ver si la aprueba o no, si no la aprueba, rechaza la versión, si la aprueba el flujo del proceso continúa.</p><figure id="62002f42-f06b-462c-8998-2927256ef2fe" class="image"><a href="Manual%20de%20Usuario%202f15d239e167412685835a711860125e/Untitled%2066.png"><img style="width:1920px" src="Manual%20de%20Usuario%202f15d239e167412685835a711860125e/Untitled%2066.png"/></a></figure><figure id="fc3a6fa0-731b-4eda-817f-1e690dc8ba58" class="image"><a href="Manual%20de%20Usuario%202f15d239e167412685835a711860125e/Untitled%2067.png"><img style="width:1920px" src="Manual%20de%20Usuario%202f15d239e167412685835a711860125e/Untitled%2067.png"/></a></figure><figure id="50d9bfc7-a780-4834-b54e-c0b118dc27a5" class="image"><a href="Manual%20de%20Usuario%202f15d239e167412685835a711860125e/Untitled%2068.png"><img style="width:1920px" src="Manual%20de%20Usuario%202f15d239e167412685835a711860125e/Untitled%2068.png"/></a></figure><h3 id="22f57175-ee6a-4e30-a652-95ed03d15ece" class="">Final del proceso</h3><p id="ec2327c9-dd83-411d-8da4-c9f88bf956b2" class="">Conforme siga el flujo, llegarás a la última etapa de la penúltima fase, al ser aprobada por el usuario con el rol líder de equipo finalizará el proceso de ingeniería de requisitos quedando en la fase final, los requisitos definitivos que podrán ser accedidos en formato PDF.</p><figure id="8551a354-4ac3-4579-a150-524ab330fa8a" class="image"><a href="Manual%20de%20Usuario%202f15d239e167412685835a711860125e/Untitled%2069.png"><img style="width:1920px" src="Manual%20de%20Usuario%202f15d239e167412685835a711860125e/Untitled%2069.png"/></a></figure><figure id="c9e0409b-82f2-4a60-a67a-0e9c4d8f26db" class="image"><a href="Manual%20de%20Usuario%202f15d239e167412685835a711860125e/Untitled%2070.png"><img style="width:1920px" src="Manual%20de%20Usuario%202f15d239e167412685835a711860125e/Untitled%2070.png"/></a></figure><p id="f8c6c1ca-3bdf-40de-ac7f-e3d22bf05dca" class="">Una vez finalice el proyecto, ya podrás postular a otro. Si hay más servicios de consultoría, además de este, contratados en el proyecto, el proyecto aún no habrá finalizado, por lo que seguiría el siguiente servicio, que sería SQA o SQC.</p><p id="9cfd1ecd-3471-4c6d-aaec-450db26978aa" class="">
+</p></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>
